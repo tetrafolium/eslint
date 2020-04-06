@@ -4,6 +4,8 @@ inspecode:
   eslint:
   - auto-fix: true
     thresholds: { num-issues: 999 }
-  - ignore: tests/fixtures/config-extends/
+  - ignore:
+    - tests/fixtures/config-extends/
+    - tests/fixtures/config-hierarchy/broken/
     auto-fix: true
     thresholds: { num-issues: 999 }
