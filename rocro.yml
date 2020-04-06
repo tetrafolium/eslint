@@ -2,7 +2,7 @@ inspecode:
 
   #### -> codelift#1790
   eslint:
-  - auto-fix: true
+  - auto-fix: false
     thresholds: { num-issues: 999 }
   - ignore:
     - tests/fixtures/config-extends/
