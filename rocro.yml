@@ -1,8 +1,8 @@
 inspecode:
 
-  #experimental:
-  #  runtime:
-  #    nodejs: 12
+  experimental:
+    runtime:
+      nodejs: 12
 
   jshint:
     thresholds: { num-issues: 999 }
