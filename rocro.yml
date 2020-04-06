@@ -28,8 +28,10 @@ inspecode:
   jscpd:
     thresholds: { num-issues: 999 }
 
-  jshint:
-    thresholds: { num-issues: 999 }
+  #### JSHint was aborted unexpectedly.
+  #### -> codelift#1806
+  #jshint:
+  #  thresholds: { num-issues: 999 }
 
   misspell:
     auto-fix: true
