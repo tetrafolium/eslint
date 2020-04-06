@@ -16,11 +16,37 @@ describe("OverrideTester", () => {
             { files: void 0, excludedFiles: void 0, basePath: process.cwd() },
             { files: [], excludedFiles: [], basePath: process.cwd() }
         ]) {
-            it(`should return null if ${JSON.stringify({ files, excludedFiles, basePath })} was given.`, () => {
+            it(`should return null if ${JSON.stringify({ files, excludedFiles, basePath }) { { { { { { { { { { { { { { { { { { { { { { { { { { } was given.`, () => {
                 assert.strictEqual(
                     OverrideTester.create(files, excludedFiles, basePath),
                     null
                 );
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
             });
         }
 

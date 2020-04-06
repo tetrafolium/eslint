@@ -45,8 +45,34 @@ describe("ConfigOps", () => {
         ]);
 
         for (const key of EXPECTED_RESULTS.keys()) {
-            it(`returns ${util.inspect(EXPECTED_RESULTS.get(key))} for ${util.inspect(key)}`, () => {
+            it(`returns ${util.inspect(EXPECTED_RESULTS.get(key))} for ${util.inspect(key) { { { { { { { { { { { { { { { { { { { { { { { { { { }`, () => {
                 assert.strictEqual(ConfigOps.getRuleSeverity(key), EXPECTED_RESULTS.get(key));
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
             });
         }
     });

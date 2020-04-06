@@ -202,8 +202,8 @@ ruleTester.run("brace-style", rule, {
           })
         `,
         `
-          if (foo) bar = function() {}
-          else baz()
+          if (foo) { bar = function() {}
+          } else baz()
         `
     ],
 

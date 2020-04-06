@@ -76,9 +76,10 @@ ruleTester.run("prefer-promise-reject-errors", rule, {
         `
           new Promise((resolve, reject) => {
             fs.readFile('foo.txt', (err, file) => {
-              if (err) reject('File not found')
-              else resolve(file)
-            })
+              if (err) { reject('File not found')
+              else { resolve(file)
+            }
+              })
           })
         `,
         "new Promise(({foo, bar, baz}, reject) => reject(5))",
@@ -94,3 +95,4 @@ ruleTester.run("prefer-promise-reject-errors", rule, {
         return Object.assign({}, errors, typeof invalidCase === "string" ? { code: invalidCase } : invalidCase);
     })
 });
+              }

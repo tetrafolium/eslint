@@ -105,7 +105,8 @@ ruleTester.run("no-useless-return", rule, {
         {
             code: `
               function foo() {
-                for (var foo of bar) return;
+                for (var foo of bar) { return;
+                }
               }
             `,
             parserOptions: { ecmaVersion: 6 }
@@ -130,7 +131,8 @@ ruleTester.run("no-useless-return", rule, {
         // https://github.com/eslint/eslint/issues/7477
         `
           function foo() {
-            if (bar) return;
+            if (bar) { return;
+            }
             return baz;
           }
         `,
@@ -144,8 +146,9 @@ ruleTester.run("no-useless-return", rule, {
         `,
         `
           function foo() {
-            if (bar) baz();
-            else return;
+            if (bar) { baz();
+            } else { return;
+            }
             return 5;
           }
         `,
@@ -154,7 +157,8 @@ ruleTester.run("no-useless-return", rule, {
         `
           function foo() {
             return;
-            while (foo) return;
+            while (foo) { return;
+            }
             foo;
           }
         `,
@@ -163,7 +167,7 @@ ruleTester.run("no-useless-return", rule, {
         `
           try {
             throw new Error('foo');
-            while (false);
+            while (false) {}
           } catch (err) {}
         `,
 

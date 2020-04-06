@@ -101,14 +101,16 @@ ruleTester.run("semi", rule, {
         // https://github.com/eslint/eslint/issues/9521
         {
             code: `
-                do; while(a);
+                do {;
+                } while(a);
                 [1,2,3].forEach(doSomething)
             `,
             options: ["never", { beforeStatementContinuationChars: "any" }]
         },
         {
             code: `
-                do; while(a)
+                do {;
+                } while(a)
                 [1,2,3].forEach(doSomething)
             `,
             options: ["never", { beforeStatementContinuationChars: "any" }]
@@ -159,7 +161,8 @@ ruleTester.run("semi", rule, {
         },
         {
             code: `
-                do; while(a);
+                do {;
+                } while(a);
                 [1,2,3].forEach(doSomething)
             `,
             options: ["never", { beforeStatementContinuationChars: "always" }]
@@ -218,7 +221,8 @@ ruleTester.run("semi", rule, {
         },
         {
             code: `
-                do; while(a)
+                do {;
+                } while(a)
                 [1,2,3].forEach(doSomething)
             `,
             options: ["never", { beforeStatementContinuationChars: "never" }]
@@ -954,11 +958,13 @@ ruleTester.run("semi", rule, {
         },
         {
             code: `
-                do; while(a)
+                do {;
+                } while(a)
                 [1,2,3].forEach(doSomething)
             `,
             output: `
-                do; while(a);
+                do {;
+                } while(a);
                 [1,2,3].forEach(doSomething)
             `,
             options: ["never", { beforeStatementContinuationChars: "always" }],
@@ -1054,11 +1060,13 @@ ruleTester.run("semi", rule, {
         },
         {
             code: `
-                do; while(a);
+                do {;
+                } while(a);
                 [1,2,3].forEach(doSomething)
             `,
             output: `
-                do; while(a)
+                do {;
+                } while(a)
                 [1,2,3].forEach(doSomething)
             `,
             options: ["never", { beforeStatementContinuationChars: "never" }],
@@ -1153,11 +1161,13 @@ ruleTester.run("semi", rule, {
         },
         {
             code: `
-                do; while(a)
+                do {;
+                } while(a)
                 ;[1,2,3].forEach(doSomething)
             `,
             output: `
-                do; while(a)
+                do {;
+                } while(a)
                 [1,2,3].forEach(doSomething)
             `,
             options: ["never", { beforeStatementContinuationChars: "never" }],

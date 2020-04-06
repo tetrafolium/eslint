@@ -5,14 +5,16 @@ s1_2->s1_7->s1_8;
 s1_3->s1_5->s1_6;
 s1_9->final;
 */
-if (a)
-    if (b)
-        if (c)
+if (a) {
+    if (b) {
+        if (c) {
             foo;
-        else
+        } else {
             bar;
-    else
+    } } else {
         baz;
+    }
+}
 
 /*DOT
 digraph {

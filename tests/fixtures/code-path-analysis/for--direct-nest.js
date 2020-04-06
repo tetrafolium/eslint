@@ -4,8 +4,8 @@ s1_2->s1_9;
 s1_5->s1_8->s1_4->s1_2;
 s1_9->final;
 */
-for (var i = 0; i < 10; ++i)
-    for (var j = 0; j < 10; ++j)
+for (var i = 0; i < 10; ++i) {
+    for (var j = 0; j < 10; ++j) {
         foo
 
 /*DOT
@@ -28,3 +28,5 @@ digraph {
     s1_9->final;
 }
 */
+    }
+}

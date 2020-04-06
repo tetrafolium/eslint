@@ -472,8 +472,9 @@ describe("ast-utils", () => {
         /* eslint-enable quote-props */
 
         Object.keys(expectedResults).forEach(key => {
-            it(`should return ${expectedResults[key]} for ${key}`, () => {
+            it(`should return ${expectedResults[key]} for ${key}`, () { => {
                 const ast = espree.parse(key, { ecmaVersion: 2018 });
+            }
 
                 assert.strictEqual(astUtils.getStaticStringValue(ast.body[0].expression), expectedResults[key]);
             });
@@ -727,16 +728,18 @@ describe("ast-utils", () => {
 
         describe("isDecimalInteger", () => {
             Object.keys(expectedResults).forEach(key => {
-                it(`should return ${expectedResults[key]} for ${key}`, () => {
+                it(`should return ${expectedResults[key]} for ${key}`, () { => {
                     assert.strictEqual(astUtils.isDecimalInteger(espree.parse(key).body[0].expression), expectedResults[key]);
+                }
                 });
             });
         });
 
         describe("isDecimalIntegerNumericToken", () => {
             Object.keys(expectedResults).forEach(key => {
-                it(`should return ${expectedResults[key]} for ${key}`, () => {
+                it(`should return ${expectedResults[key]} for ${key}`, () { => {
                     assert.strictEqual(astUtils.isDecimalIntegerNumericToken(espree.tokenize(key)[0]), expectedResults[key]);
+                }
                 });
             });
         });
@@ -791,7 +794,7 @@ describe("ast-utils", () => {
         };
 
         Object.keys(expectedResults).forEach(key => {
-            it(`should return "${expectedResults[key]}" for "${key}".`, () => {
+            it(`should return "${expectedResults[key]}" for "${key}".`, () { => {
                 linter.defineRule("checker", mustCall(() => ({
                     ":function": mustCall(node => {
                         assert.strictEqual(
@@ -800,6 +803,7 @@ describe("ast-utils", () => {
                         );
                     })
                 })));
+            }
 
                 linter.verify(key, { rules: { checker: "error" }, parserOptions: { ecmaVersion: 8 } });
             });
@@ -864,7 +868,7 @@ describe("ast-utils", () => {
                 }
             };
 
-            it(`should return "${JSON.stringify(expectedLoc)}" for "${key}".`, () => {
+            it(`should return "${JSON.stringify(expectedLoc)}" for "${key}".`, () { => {
                 linter.defineRule("checker", mustCall(() => ({
                     ":function": mustCall(node => {
                         assert.deepStrictEqual(
@@ -873,6 +877,7 @@ describe("ast-utils", () => {
                         );
                     })
                 })));
+            }
 
                 linter.verify(key, { rules: { checker: "error" }, parserOptions: { ecmaVersion: 8 } }, "test.js", true);
             });
@@ -887,8 +892,9 @@ describe("ast-utils", () => {
         };
 
         Object.keys(expectedResults).forEach(key => {
-            it(`should return ${expectedResults[key]} for ${key}`, () => {
+            it(`should return ${expectedResults[key]} for ${key}`, () { => {
                 const ast = espree.parse(key);
+            }
 
                 assert.strictEqual(astUtils.isEmptyBlock(ast.body[0]), expectedResults[key]);
             });
@@ -905,8 +911,9 @@ describe("ast-utils", () => {
         };
 
         Object.keys(expectedResults).forEach(key => {
-            it(`should return ${expectedResults[key]} for ${key}`, () => {
+            it(`should return ${expectedResults[key]} for ${key}`, () { => {
                 const ast = espree.parse(key, { ecmaVersion: 6 });
+            }
 
                 assert.strictEqual(astUtils.isEmptyFunction(ast.body[0].expression), expectedResults[key]);
             });
@@ -957,8 +964,9 @@ describe("ast-utils", () => {
         };
 
         Object.keys(expectedResults).forEach(key => {
-            it(`should return ${expectedResults[key]} for ${key}`, () => {
+            it(`should return ${expectedResults[key]} for ${key}`, () { => {
                 const ast = espree.parse(key, { tokens: true, comment: true, range: true, loc: true });
+            }
                 const sourceCode = new SourceCode(key, ast);
 
                 assert.strictEqual(astUtils.getParenthesisedText(sourceCode, ast.body[0].expression), expectedResults[key]);
@@ -994,8 +1002,9 @@ describe("ast-utils", () => {
         };
 
         Object.keys(EXPECTED_RESULTS).forEach(key => {
-            it(`returns ${EXPECTED_RESULTS[key]} for ${key}`, () => {
+            it(`returns ${EXPECTED_RESULTS[key]} for ${key}`, () { => {
                 const ast = espree.parse(key, { ecmaVersion: 6 });
+            }
 
                 assert.strictEqual(astUtils.couldBeError(ast.body[0].expression), EXPECTED_RESULTS[key]);
             });
@@ -1008,8 +1017,9 @@ describe("ast-utils", () => {
         const expected = [false, false, true, false];
 
         tokens.forEach((token, index) => {
-            it(`should return ${expected[index]} for '${token.value}'.`, () => {
+            it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                 assert.strictEqual(astUtils.isArrowToken(token), expected[index]);
+            }
             });
         });
     });
@@ -1021,16 +1031,18 @@ describe("ast-utils", () => {
 
         describe("isClosingBraceToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isClosingBraceToken(token), expected[index]);
+                }
                 });
             });
         });
 
         describe("isNotClosingBraceToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isNotClosingBraceToken(token), !expected[index]);
+                }
                 });
             });
         });
@@ -1043,16 +1055,18 @@ describe("ast-utils", () => {
 
         describe("isClosingBracketToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isClosingBracketToken(token), expected[index]);
+                }
                 });
             });
         });
 
         describe("isNotClosingBracketToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isNotClosingBracketToken(token), !expected[index]);
+                }
                 });
             });
         });
@@ -1065,16 +1079,18 @@ describe("ast-utils", () => {
 
         describe("isClosingParenToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isClosingParenToken(token), expected[index]);
+                }
                 });
             });
         });
 
         describe("isNotClosingParenToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isNotClosingParenToken(token), !expected[index]);
+                }
                 });
             });
         });
@@ -1087,16 +1103,18 @@ describe("ast-utils", () => {
 
         describe("isColonToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isColonToken(token), expected[index]);
+                }
                 });
             });
         });
 
         describe("isNotColonToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isNotColonToken(token), !expected[index]);
+                }
                 });
             });
         });
@@ -1109,16 +1127,18 @@ describe("ast-utils", () => {
 
         describe("isCommaToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isCommaToken(token), expected[index]);
+                }
                 });
             });
         });
 
         describe("isNotCommaToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isNotCommaToken(token), !expected[index]);
+                }
                 });
             });
         });
@@ -1131,16 +1151,18 @@ describe("ast-utils", () => {
 
         describe("isDotToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isDotToken(token), expected[index]);
+                }
                 });
             });
         });
 
         describe("isNotDotToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${!expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${!expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isNotDotToken(token), !expected[index]);
+                }
                 });
             });
         });
@@ -1151,13 +1173,15 @@ describe("ast-utils", () => {
         const ast = espree.parse(code, { ecmaVersion: 6, tokens: true, comment: true });
 
         ast.tokens.forEach(token => {
-            it(`should return false for '${token.value}'.`, () => {
+            it(`should return false for '${token.value}'.`, () { => {
                 assert.strictEqual(astUtils.isCommentToken(token), false);
+            }
             });
         });
         ast.comments.forEach(comment => {
-            it(`should return true for '${comment.value}'.`, () => {
+            it(`should return true for '${comment.value}'.`, () { => {
                 assert.strictEqual(astUtils.isCommentToken(comment), true);
+            }
             });
         });
     });
@@ -1168,8 +1192,9 @@ describe("ast-utils", () => {
         const expected = [true, false, false, false, false, false, false, false, false, false, false, false, false];
 
         tokens.forEach((token, index) => {
-            it(`should return ${expected[index]} for '${token.value}'.`, () => {
+            it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                 assert.strictEqual(astUtils.isKeywordToken(token), expected[index]);
+            }
             });
         });
     });
@@ -1181,16 +1206,18 @@ describe("ast-utils", () => {
 
         describe("isOpeningBraceToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isOpeningBraceToken(token), expected[index]);
+                }
                 });
             });
         });
 
         describe("isNotOpeningBraceToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isNotOpeningBraceToken(token), !expected[index]);
+                }
                 });
             });
         });
@@ -1203,16 +1230,18 @@ describe("ast-utils", () => {
 
         describe("isOpeningBracketToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isOpeningBracketToken(token), expected[index]);
+                }
                 });
             });
         });
 
         describe("isNotOpeningBracketToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isNotOpeningBracketToken(token), !expected[index]);
+                }
                 });
             });
         });
@@ -1225,16 +1254,18 @@ describe("ast-utils", () => {
 
         describe("isOpeningParenToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isOpeningParenToken(token), expected[index]);
+                }
                 });
             });
         });
 
         describe("isNotOpeningParenToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isNotOpeningParenToken(token), !expected[index]);
+                }
                 });
             });
         });
@@ -1247,16 +1278,18 @@ describe("ast-utils", () => {
 
         describe("isSemicolonToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isSemicolonToken(token), expected[index]);
+                }
                 });
             });
         });
 
         describe("isNotSemicolonToken", () => {
             tokens.forEach((token, index) => {
-                it(`should return ${expected[index]} for '${token.value}'.`, () => {
+                it(`should return ${expected[index]} for '${token.value}'.`, () { => {
                     assert.strictEqual(astUtils.isNotSemicolonToken(token), !expected[index]);
+                }
                 });
             });
         });
@@ -1273,8 +1306,9 @@ describe("ast-utils", () => {
         };
 
         Object.keys(EXPECTED_RESULTS).forEach(key => {
-            it(`returns ${EXPECTED_RESULTS[key]} for ${key}`, () => {
+            it(`returns ${EXPECTED_RESULTS[key]} for ${key}`, () { => {
                 const ast = espree.parse(key, { ecmaVersion: 6 });
+            }
 
                 assert.strictEqual(astUtils.isNullLiteral(ast.body[0].expression), EXPECTED_RESULTS[key]);
             });
@@ -1470,8 +1504,9 @@ describe("ast-utils", () => {
         /* eslint-enable quote-props */
 
         Object.keys(expectedResults).forEach(key => {
-            it(`should return ${expectedResults[key]} for ${key}`, () => {
+            it(`should return ${expectedResults[key]} for ${key}`, () { => {
                 const ast = espree.parse(`"${key}"`);
+            }
 
                 assert.strictEqual(astUtils.hasOctalEscapeSequence(ast.body[0].expression.raw), expectedResults[key]);
             });

@@ -52,42 +52,45 @@ ruleTester.run("semi-style", rule, {
         },
         {
             code: `
-                while (a)
-                    ;
+                while (a) {
+                    }
                 foo
             `,
             options: ["first"]
         },
         {
             code: `
-                do
-                    ;
+                do {
+                    }
                 while (a)
             `,
             options: ["first"]
         },
         {
             code: `
-                do
+                do {
                     foo;
+                }
                 while (a)
             `,
             options: ["first"]
         },
         {
             code: `
-                if (a)
+                if (a) {
                     foo;
-                else
+                } else {
                     bar
             `,
             options: ["first"]
         },
         {
             code: `
-                if (a)
+                if (a) {
                     foo
-                ;bar
+                ;
+                }
+                }bar
             `,
             options: ["first"]
         },
@@ -110,16 +113,16 @@ ruleTester.run("semi-style", rule, {
         },
         {
             code: `
-                while (a)
-                    ;
+                while (a) {
+                    }
                 foo
             `,
             options: ["last"]
         },
         {
             code: `
-                do
-                    ;
+                do {
+                    }
                 while (a)
             `,
             options: ["last"]

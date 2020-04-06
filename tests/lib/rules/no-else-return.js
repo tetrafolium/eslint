@@ -30,17 +30,20 @@ ruleTester.run("no-else-return", rule, {
         "if (0) { if (0) {} else {} } else {}",
         `
             function foo() {
-                if (foo)
-                    if (bar) return;
-                    else baz;
-                else qux;
+                if (foo) {
+                    if (bar) { return;
+                    } else { baz;
+                } } else { qux;
+                }
             }
         `,
         `
             function foo() {
-                while (foo)
-                    if (bar) return;
-                    else baz;
+                while (foo) {
+                    if (bar) { return;
+                    } else { baz;
+                    }
+                }
             }
         `,
         {

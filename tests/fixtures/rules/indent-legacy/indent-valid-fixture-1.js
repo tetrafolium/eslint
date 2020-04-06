@@ -10,7 +10,8 @@ if (a) {
     } // <-
   } // <-
 
-  while (k) l++;
+  while (k) { l++;
+  }
   while (m) {
     n--; // ->
   } // <-
@@ -262,9 +263,11 @@ a.b()
   }).d.e;
 
 if (a == 'b') {
-  if (c && d) e = f
-  else g('h').i('j')
+  if (c && d) { e = f
+  else { g('h').i('j')
 }
+  }
+  }
 
 a = function (b, c) {
   return a(function () {
@@ -274,8 +277,9 @@ a = function (b, c) {
 
     if (!j) k('l', (m = n))
     if (o) p
-    else if (q) r
-  })
+    else if (q) { r
+  }
+    })
 }
 
 var a = function() {
@@ -385,8 +389,8 @@ else {
   e(); // <-
 }
 
-if (a) b();
-else {
+if (a) { b();
+} else {
   c(); // ->
   d();
   e(); // <-
@@ -394,12 +398,14 @@ else {
 
 if (a) {
   b();
-} else c();
+} else { c();
+}
 
 if (a) {
   b();
 }
-else c();
+else { c();
+}
 
 a();
 
@@ -509,8 +515,9 @@ function a(b) {
 
 switch (a) {
   default:
-    if (b)
+    if (b) {
       c();
+    }
 }
 
 function test(x) {
@@ -525,6 +532,7 @@ function test(x) {
 
 switch (a) {
   default:
-    if (b)
+    if (b) {
       c();
+    }
 }

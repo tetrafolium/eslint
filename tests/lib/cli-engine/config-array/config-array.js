@@ -56,8 +56,34 @@ describe("ConfigArray", () => {
         ];
 
         for (const { elements, expected } of patterns) {
-            it(`should be ${expected} if the elements are ${JSON.stringify(elements)}.`, () => {
+            it(`should be ${expected} if the elements are ${JSON.stringify(elements) { { { { { { { { { { { { { { { { { { { { { { { { { { }.`, () => {
                 assert.strictEqual(new ConfigArray(...elements).isRoot(), expected);
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
+            }
             });
         }
     });

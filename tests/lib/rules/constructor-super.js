@@ -219,7 +219,8 @@ ruleTester.run("constructor-super", rule, {
         {
             code: `class Foo extends Bar {
                 constructor() {
-                    for (a in b) for (c in d);
+                    for (a in b) { for (c in d) {}
+                    }
                 }
             }`,
             errors: [{ messageId: "missingAll", type: "MethodDefinition" }]

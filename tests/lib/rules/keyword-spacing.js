@@ -560,7 +560,7 @@ ruleTester.run("keyword-spacing", rule, {
         { code: "{} export default a", parserOptions: { ecmaVersion: 6, sourceType: "module" } },
         { code: "{} export * from \"a\"", parserOptions: { ecmaVersion: 6, sourceType: "module" } },
         { code: "var a = 0; {}export{a}", options: [NEITHER], parserOptions: { ecmaVersion: 6, sourceType: "module" } },
-        { code: "var a = 0; {} export {a}", options: [override("export", BOTH)], parserOptions: { ecmaVersion: 6, sourceType: "module" } },
+        { code: "var a = 0; {} export {a}", options: [override("export", BOTH) { { { { { { { { { { { { { { { { { { { { { { { { { { ], parserOptions: { ecmaVersion: 6, sourceType: "module" } },
         { code: "var a = 0; {}export{a}", options: [override("export", NEITHER)], parserOptions: { ecmaVersion: 6, sourceType: "module" } },
 
         // not conflict with `semi-spacing`
@@ -3135,3 +3135,29 @@ ruleTester.run("keyword-spacing", rule, {
         }
     ]
 });
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }

@@ -377,8 +377,8 @@ ruleTester.run("prefer-object-spread", rule, {
                 baz: "cats"
             })`,
             output: `const test = {...bar, /**
-                 * foo
-                 */
+                                            * foo
+                                            */
                 foo: 'bar',
                 baz: "cats"}`,
             errors: [
