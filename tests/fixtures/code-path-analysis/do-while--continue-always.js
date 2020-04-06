@@ -4,9 +4,7 @@ initial->s1_1->s1_2->s1_3->s1_4->s1_2->s1_4->s1_5->final;
 do {
     foo();
     continue;
-} while (a)
-
-/*DOT
+} while (a)/*DOT
 digraph {
     node[shape=box,style="rounded,filled",fillcolor=white];
     initial[label="",shape=circle,style=filled,fillcolor=black,width=0.25,height=0.25];

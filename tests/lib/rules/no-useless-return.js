@@ -105,7 +105,8 @@ ruleTester.run("no-useless-return", rule, {
         {
             code: `
               function foo() {
-                for (var foo of bar) { return;
+                for (var foo of bar) {
+return;
                 }
               }
             `,
@@ -131,7 +132,8 @@ ruleTester.run("no-useless-return", rule, {
         // https://github.com/eslint/eslint/issues/7477
         `
           function foo() {
-            if (bar) { return;
+            if (bar) {
+return;
             }
             return baz;
           }
@@ -146,8 +148,10 @@ ruleTester.run("no-useless-return", rule, {
         `,
         `
           function foo() {
-            if (bar) { baz();
-            } else { return;
+            if (bar) {
+baz();
+            } else {
+return;
             }
             return 5;
           }
@@ -157,7 +161,8 @@ ruleTester.run("no-useless-return", rule, {
         `
           function foo() {
             return;
-            while (foo) { return;
+            while (foo) {
+return;
             }
             foo;
           }
@@ -167,8 +172,10 @@ ruleTester.run("no-useless-return", rule, {
         `
           try {
             throw new Error('foo');
-            while (false) {}
-          } catch (err) {}
+            while (false) {
+}
+          } catch (err) {
+}
         `,
 
         // https://github.com/eslint/eslint/issues/11647
@@ -230,7 +237,6 @@ ruleTester.run("no-useless-return", rule, {
             output: `
               function foo() {
                 if (foo) {
-                  
                 }
                 return;
               }
@@ -259,7 +265,6 @@ ruleTester.run("no-useless-return", rule, {
                     doSomething();
                   default:
                     doSomethingElse();
-                    
                 }
               }
             `
@@ -283,7 +288,6 @@ ruleTester.run("no-useless-return", rule, {
                     doSomething();
                   case 1:
                     doSomething();
-                    
                 }
               }
             `
@@ -309,7 +313,6 @@ ruleTester.run("no-useless-return", rule, {
                   case 1:
                     if (a) {
                       doSomething();
-                      
                     }
                     break;
                   default:
@@ -341,7 +344,6 @@ ruleTester.run("no-useless-return", rule, {
                   case 1:
                     if (a) {
                       doSomething();
-                      
                     } else {
                       doSomething();
                     }
@@ -371,7 +373,6 @@ ruleTester.run("no-useless-return", rule, {
                   case 1:
                     if (a) {
                       doSomething();
-                      
                     }
                   default:
                 }
@@ -381,12 +382,16 @@ ruleTester.run("no-useless-return", rule, {
         {
             code: `
               function foo() {
-                try {} catch (err) { return; }
+                try {
+} catch (err) {
+return; }
               }
             `,
             output: `
               function foo() {
-                try {} catch (err) {  }
+                try {
+} catch (err) {
+}
               }
             `
         },
@@ -399,13 +404,15 @@ ruleTester.run("no-useless-return", rule, {
         {
             code: `
               function foo() {
-                try {} finally {}
+                try {
+} finally {}
                 return;
               }
             `,
             output: `
               function foo() {
-                try {} finally {}
+                try {
+} finally {}
                 
               }
             `

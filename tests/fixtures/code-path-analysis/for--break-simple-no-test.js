@@ -2,7 +2,7 @@
 initial->s1_1->s1_3->s1_4->s1_5->s1_6->s1_2->s1_3->s1_6;
 s1_4->s1_7->final;
 */
-for (var i = 0; ; ++i) {
+for (var i = 0;; ++i) {
     if (b) {
         break;
     }

@@ -107,7 +107,6 @@ function reduceBadExampleSize({
                     }
                 }
             } else if (typeof node[key] === "object" && node[key] !== null) {
-
                 const childNode = node[key];
 
                 if (isMaybeExpression(childNode)) {
@@ -147,7 +146,6 @@ function reduceBadExampleSize({
                 if (reproducesBadCase(recast.print(childNode).code)) {
                     return extractRelevantChild(childNode);
                 }
-
             } else if (isStatement(childNode)) {
                 if (reproducesBadCase(recast.print(childNode).code)) {
                     return extractRelevantChild(childNode);

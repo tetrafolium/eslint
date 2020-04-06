@@ -99,7 +99,8 @@ describe("IgnorePattern", () => {
             ];
 
             for (const [filename, expected] of patterns) {
-                it(`should return ${expected} if '${filename}' was given.`, () { => {
+                it(`should return ${expected} if '${filename}' was given.`, () {
+=> {
                     assert.strictEqual(ignores(path.join(cwd, filename)), expected);
                 }
                 });

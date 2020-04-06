@@ -155,7 +155,6 @@ ruleTester.run("brace-style", rule, {
         "{}",
         `
             if (foo) {
-
             }
 
             {
@@ -186,7 +185,8 @@ ruleTester.run("brace-style", rule, {
         `
           class Ball {
             throw() {}
-            catch() {}
+            catch () {
+}
           }
         `,
         `
@@ -197,12 +197,13 @@ ruleTester.run("brace-style", rule, {
         `,
         `
           (class {
-            or() {}
-            else() {}
+            or() {} else () {
+}
           })
         `,
         `
-          if (foo) { bar = function() {}
+          if (foo) {
+bar = function() {}
           } else baz()
         `
     ],
@@ -645,11 +646,9 @@ ruleTester.run("brace-style", rule, {
         // https://github.com/eslint/eslint/issues/7621
         {
             code: `
-                if (foo)
-                {
+                if (foo) {
                     bar
-                }
-                else {
+                } else {
                     baz
                 }
             `,

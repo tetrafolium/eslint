@@ -74,8 +74,8 @@ ruleTester.run("no-return-await", rule, {
         `,
         `
           async function foo() {
-            try {}
-            catch (e) {
+            try {
+} catch (e) {
               return await bar();
             } finally {
               baz();
@@ -85,7 +85,8 @@ ruleTester.run("no-return-await", rule, {
         `
           async function foo() {
             try {
-              try {}
+              try {
+}
               finally {
                 return await bar();
               }
@@ -97,8 +98,8 @@ ruleTester.run("no-return-await", rule, {
         `
           async function foo() {
             try {
-              try {}
-              catch (e) {
+              try {
+} catch (e) {
                 return await bar();
               }
             } finally {
@@ -235,7 +236,8 @@ ruleTester.run("no-return-await", rule, {
         {
             code: `
               async function foo() {
-                try {}
+                try {
+}
                 finally {
                   return await bar();
                 }
@@ -246,8 +248,8 @@ ruleTester.run("no-return-await", rule, {
         {
             code: `
               async function foo() {
-                try {}
-                catch (e) {
+                try {
+} catch (e) {
                   return await bar();
                 }
               }
@@ -260,7 +262,8 @@ ruleTester.run("no-return-await", rule, {
                 async function foo() {
                   return await bar();
                 }
-              } catch (e) {}
+              } catch (e) {
+}
             `,
             errors
         },
@@ -268,17 +271,18 @@ ruleTester.run("no-return-await", rule, {
             code: `
               try {
                 async () => await bar();
-              } catch (e) {}
+              } catch (e) {
+}
             `,
             errors
         },
         {
             code: `
               async function foo() {
-                try {}
-                catch (e) {
-                  try {}
-                  catch (e) {
+                try {
+} catch (e) {
+                  try {
+} catch (e) {
                     return await bar();
                   }
                 }

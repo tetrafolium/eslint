@@ -19,8 +19,8 @@ benchmark(Boolean, 1);
 
 function benchmark(grep, times) {
     console.profile("all");
-    for(var key in runs) {
-        if(grep(key)) {
+    for (var key in runs) {
+        if (grep(key)) {
             console.time(key);
             console.profile(key);
             run(runs[key], times);
@@ -32,7 +32,7 @@ function benchmark(grep, times) {
 }
 
 function run(content, times) {
-    while(times--) {
+    while (times--) {
         linter.verify(content, config);
     }
 }

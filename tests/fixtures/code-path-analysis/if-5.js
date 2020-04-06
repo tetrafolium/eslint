@@ -5,7 +5,8 @@ s1_1->s1_4;
 s1_2->final;
 s1_4->final;
 */
-if (a) { return 0;
+if (a) {
+return 0;
 }
 foo();
 

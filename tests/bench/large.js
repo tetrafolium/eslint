@@ -1,12 +1,18 @@
 // 2.4.3
 var JSHINT;
-if (typeof window === 'undefined') { window = {};
+if (typeof window === 'undefined') {
+window = {};
 }
 (function () {
 var require;
-require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a) { return a(o,!0);
-}if(i) { return i(o,!0);
-}throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++) { s(r[o]);
+require=(function e(t,n,r){function s(o,u){if (!n[o]) {
+if (!t[o]) {
+var a=typeof require=="function"&&require;if (!u&&a) {
+return a(o,!0);
+}if (i) {
+return i(o,!0);
+}throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for (var o=0; o<r.length; o++) {
+s(r[o]);
 }return s})({1:[function(require,module,exports){
 var identifierStartTable = [];
 
@@ -50142,8 +50148,7 @@ assert.AssertionError = function AssertionError(options) {
 
   if (Error.captureStackTrace) {
     Error.captureStackTrace(this, stackStartFunction);
-  }
-  else {
+  } else {
     // non v8 browsers so we can have a stacktrace
     var err = new Error();
     if (err.stack) {
@@ -50226,7 +50231,8 @@ assert.fail = fail;
 // assert.strictEqual(true, guard, message_opt);.
 
 function ok(value, message) {
-  if (!value) { fail(value, true, message, '==', assert.ok);
+  if (!value) {
+fail(value, true, message, '==', assert.ok);
   }
 }
 assert.ok = ok;
@@ -50236,7 +50242,8 @@ assert.ok = ok;
 // assert.equal(actual, expected, message_opt);
 
 assert.equal = function equal(actual, expected, message) {
-  if (actual != expected) { fail(actual, expected, message, '==', assert.equal);
+  if (actual != expected) {
+fail(actual, expected, message, '==', assert.equal);
   }
 };
 
@@ -50262,13 +50269,14 @@ function _deepEqual(actual, expected) {
   // 7.1. All identical values are equivalent, as determined by ===.
   if (actual === expected) {
     return true;
-
   } else if (util.isBuffer(actual) && util.isBuffer(expected)) {
-    if (actual.length != expected.length) { return false;
+    if (actual.length != expected.length) {
+return false;
     }
 
     for (var i = 0; i < actual.length; i++) {
-      if (actual[i] !== expected[i]) { return false;
+      if (actual[i] !== expected[i]) {
+return false;
       }
     }
 
@@ -50314,7 +50322,8 @@ function objEquiv(a, b) {
     return false;
   }
   // an identical 'prototype' property.
-  if (a.prototype !== b.prototype) { return false;
+  if (a.prototype !== b.prototype) {
+return false;
   }
   //~~~I've managed to break Object.keys through screwy arguments passing.
   //   Converting to array solves the problem.
@@ -50351,7 +50360,8 @@ function objEquiv(a, b) {
   //~~~possibly expensive deep test
   for (i = ka.length - 1; i >= 0; i--) {
     key = ka[i];
-    if (!_deepEqual(a[key], b[key])) { return false;
+    if (!_deepEqual(a[key], b[key])) {
+return false;
     }
   }
   return true;
@@ -50443,12 +50453,14 @@ assert.doesNotThrow = function(block, /*optional*/message) {
   _throws.apply(this, [false].concat(pSlice.call(arguments)));
 };
 
-assert.ifError = function(err) { if (err) {throw err;}};
+assert.ifError = function(err) { if (err) {
+throw err;}};
 
 var objectKeys = Object.keys || function (obj) {
   var keys = [];
   for (var key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) { keys.push(key);
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+keys.push(key);
     }
   }
   return keys;
@@ -50665,7 +50677,6 @@ EventEmitter.prototype.removeListener = function(type, listener) {
     if (this._events.removeListener) {
       this.emit('removeListener', type, listener);
     }
-
   } else if (isObject(list)) {
     for (i = length; i-- > 0;) {
       if (list[i] === listener ||
@@ -50714,7 +50725,8 @@ EventEmitter.prototype.removeAllListeners = function(type) {
   // emit removeListener for all listeners on all events
   if (arguments.length === 0) {
     for (key in this._events) {
-      if (key === 'removeListener') { continue;
+      if (key === 'removeListener') {
+continue;
       }
       this.removeAllListeners(key);
     }
@@ -50901,9 +50913,11 @@ exports.format = function(f) {
   var args = arguments;
   var len = args.length;
   var str = String(f).replace(formatRegExp, function(x) {
-    if (x === '%%') { return '%';
+    if (x === '%%') {
+return '%';
     }
-    if (i >= len) { return x;
+    if (i >= len) {
+return x;
     }
     switch (x) {
       case '%s': return String(args[i++]);
@@ -51000,9 +51014,11 @@ function inspect(obj, opts) {
     stylize: stylizeNoColor
   };
   // legacy...
-  if (arguments.length >= 3) { ctx.depth = arguments[2];
+  if (arguments.length >= 3) {
+ctx.depth = arguments[2];
   }
-  if (arguments.length >= 4) { ctx.colors = arguments[3];
+  if (arguments.length >= 4) {
+ctx.colors = arguments[3];
   }
   if (isBoolean(opts)) {
     // legacy...
@@ -51012,15 +51028,20 @@ function inspect(obj, opts) {
     exports._extend(ctx, opts);
   }
   // set default options
-  if (isUndefined(ctx.showHidden)) { ctx.showHidden = false;
+  if (isUndefined(ctx.showHidden)) {
+ctx.showHidden = false;
   }
-  if (isUndefined(ctx.depth)) { ctx.depth = 2;
+  if (isUndefined(ctx.depth)) {
+ctx.depth = 2;
   }
-  if (isUndefined(ctx.colors)) { ctx.colors = false;
+  if (isUndefined(ctx.colors)) {
+ctx.colors = false;
   }
-  if (isUndefined(ctx.customInspect)) { ctx.customInspect = true;
+  if (isUndefined(ctx.customInspect)) {
+ctx.customInspect = true;
   }
-  if (ctx.colors) { ctx.stylize = stylizeWithColor;
+  if (ctx.colors) {
+ctx.stylize = stylizeWithColor;
   }
   return formatValue(ctx, obj, ctx.depth);
 }
@@ -51310,7 +51331,8 @@ function reduceToSingleString(output, base, braces) {
   var numLinesEst = 0;
   var length = output.reduce(function(prev, cur) {
     numLinesEst++;
-    if (cur.indexOf('\n') >= 0) { numLinesEst++;
+    if (cur.indexOf('\n') >= 0) {
+numLinesEst++;
     }
     return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
   }, 0);
@@ -51454,7 +51476,8 @@ exports.inherits = require('inherits');
 
 exports._extend = function(origin, add) {
   // Don't do anything if add isn't an object
-  if (!add || !isObject(add)) { return origin;
+  if (!add || !isObject(add)) {
+return origin;
   }
 
   var keys = Object.keys(add);
@@ -51604,9 +51627,11 @@ function assert(expression) {
 
   // Create a safe reference to the Underscore object for use below.
   var _ = function(obj) {
-    if (obj instanceof _) { return obj;
+    if (obj instanceof _) {
+return obj;
     }
-    if (!(this instanceof _)) { return new _(obj);
+    if (!(this instanceof _)) {
+return new _(obj);
     }
     this._wrapped = obj;
   };
@@ -51634,19 +51659,22 @@ function assert(expression) {
   // Handles objects with the built-in `forEach`, arrays, and raw objects.
   // Delegates to **ECMAScript 5**'s native `forEach` if available.
   var each = _.each = _.forEach = function(obj, iterator, context) {
-    if (obj == null) { return;
+    if (obj == null) {
+return;
     }
     if (nativeForEach && obj.forEach === nativeForEach) {
       obj.forEach(iterator, context);
     } else if (obj.length === +obj.length) {
       for (var i = 0, l = obj.length; i < l; i++) {
-        if (iterator.call(context, obj[i], i, obj) === breaker) { return;
+        if (iterator.call(context, obj[i], i, obj) === breaker) {
+return;
         }
       }
     } else {
       for (var key in obj) {
         if (_.has(obj, key)) {
-          if (iterator.call(context, obj[key], key, obj) === breaker) { return;
+          if (iterator.call(context, obj[key], key, obj) === breaker) {
+return;
           }
         }
       }
@@ -51657,9 +51685,11 @@ function assert(expression) {
   // Delegates to **ECMAScript 5**'s native `map` if available.
   _.map = _.collect = function(obj, iterator, context) {
     var results = [];
-    if (obj == null) { return results;
+    if (obj == null) {
+return results;
     }
-    if (nativeMap && obj.map === nativeMap) { return obj.map(iterator, context);
+    if (nativeMap && obj.map === nativeMap) {
+return obj.map(iterator, context);
     }
     each(obj, function(value, index, list) {
       results[results.length] = iterator.call(context, value, index, list);
@@ -51673,10 +51703,12 @@ function assert(expression) {
   // or `foldl`. Delegates to **ECMAScript 5**'s native `reduce` if available.
   _.reduce = _.foldl = _.inject = function(obj, iterator, memo, context) {
     var initial = arguments.length > 2;
-    if (obj == null) { obj = [];
+    if (obj == null) {
+obj = [];
     }
     if (nativeReduce && obj.reduce === nativeReduce) {
-      if (context) { iterator = _.bind(iterator, context);
+      if (context) {
+iterator = _.bind(iterator, context);
       }
       return initial ? obj.reduce(iterator, memo) : obj.reduce(iterator);
     }
@@ -51688,7 +51720,8 @@ function assert(expression) {
         memo = iterator.call(context, memo, value, index, list);
       }
     });
-    if (!initial) { throw new TypeError(reduceError);
+    if (!initial) {
+throw new TypeError(reduceError);
     }
     return memo;
   };
@@ -51697,10 +51730,12 @@ function assert(expression) {
   // Delegates to **ECMAScript 5**'s native `reduceRight` if available.
   _.reduceRight = _.foldr = function(obj, iterator, memo, context) {
     var initial = arguments.length > 2;
-    if (obj == null) { obj = [];
+    if (obj == null) {
+obj = [];
     }
     if (nativeReduceRight && obj.reduceRight === nativeReduceRight) {
-      if (context) { iterator = _.bind(iterator, context);
+      if (context) {
+iterator = _.bind(iterator, context);
       }
       return initial ? obj.reduceRight(iterator, memo) : obj.reduceRight(iterator);
     }
@@ -51718,7 +51753,8 @@ function assert(expression) {
         memo = iterator.call(context, memo, obj[index], index, list);
       }
     });
-    if (!initial) { throw new TypeError(reduceError);
+    if (!initial) {
+throw new TypeError(reduceError);
     }
     return memo;
   };
@@ -51740,12 +51776,15 @@ function assert(expression) {
   // Aliased as `select`.
   _.filter = _.select = function(obj, iterator, context) {
     var results = [];
-    if (obj == null) { return results;
+    if (obj == null) {
+return results;
     }
-    if (nativeFilter && obj.filter === nativeFilter) { return obj.filter(iterator, context);
+    if (nativeFilter && obj.filter === nativeFilter) {
+return obj.filter(iterator, context);
     }
     each(obj, function(value, index, list) {
-      if (iterator.call(context, value, index, list)) { results[results.length] = value;
+      if (iterator.call(context, value, index, list)) {
+results[results.length] = value;
       }
     });
     return results;
@@ -51764,12 +51803,15 @@ function assert(expression) {
   _.every = _.all = function(obj, iterator, context) {
     iterator || (iterator = _.identity);
     var result = true;
-    if (obj == null) { return result;
+    if (obj == null) {
+return result;
     }
-    if (nativeEvery && obj.every === nativeEvery) { return obj.every(iterator, context);
+    if (nativeEvery && obj.every === nativeEvery) {
+return obj.every(iterator, context);
     }
     each(obj, function(value, index, list) {
-      if (!(result = result && iterator.call(context, value, index, list))) { return breaker;
+      if (!(result = result && iterator.call(context, value, index, list))) {
+return breaker;
       }
     });
     return !!result;
@@ -51781,12 +51823,15 @@ function assert(expression) {
   var any = _.some = _.any = function(obj, iterator, context) {
     iterator || (iterator = _.identity);
     var result = false;
-    if (obj == null) { return result;
+    if (obj == null) {
+return result;
     }
-    if (nativeSome && obj.some === nativeSome) { return obj.some(iterator, context);
+    if (nativeSome && obj.some === nativeSome) {
+return obj.some(iterator, context);
     }
     each(obj, function(value, index, list) {
-      if (result || (result = iterator.call(context, value, index, list))) { return breaker;
+      if (result || (result = iterator.call(context, value, index, list))) {
+return breaker;
       }
     });
     return !!result;
@@ -51795,9 +51840,11 @@ function assert(expression) {
   // Determine if the array or object contains a given value (using `===`).
   // Aliased as `include`.
   _.contains = _.include = function(obj, target) {
-    if (obj == null) { return false;
+    if (obj == null) {
+return false;
     }
-    if (nativeIndexOf && obj.indexOf === nativeIndexOf) { return obj.indexOf(target) != -1;
+    if (nativeIndexOf && obj.indexOf === nativeIndexOf) {
+return obj.indexOf(target) != -1;
     }
     return any(obj, function(value) {
       return value === target;
@@ -51821,11 +51868,13 @@ function assert(expression) {
   // Convenience version of a common use case of `filter`: selecting only objects
   // containing specific `key:value` pairs.
   _.where = function(obj, attrs, first) {
-    if (_.isEmpty(attrs)) { return first ? null : [];
+    if (_.isEmpty(attrs)) {
+return first ? null : [];
     }
     return _[first ? 'find' : 'filter'](obj, function(value) {
       for (var key in attrs) {
-        if (attrs[key] !== value[key]) { return false;
+        if (attrs[key] !== value[key]) {
+return false;
         }
       }
       return true;
@@ -51845,7 +51894,8 @@ function assert(expression) {
     if (!iterator && _.isArray(obj) && obj[0] === +obj[0] && obj.length < 65535) {
       return Math.max.apply(Math, obj);
     }
-    if (!iterator && _.isEmpty(obj)) { return -Infinity;
+    if (!iterator && _.isEmpty(obj)) {
+return -Infinity;
     }
     var result = {computed : -Infinity, value: -Infinity};
     each(obj, function(value, index, list) {
@@ -51860,7 +51910,8 @@ function assert(expression) {
     if (!iterator && _.isArray(obj) && obj[0] === +obj[0] && obj.length < 65535) {
       return Math.min.apply(Math, obj);
     }
-    if (!iterator && _.isEmpty(obj)) { return Infinity;
+    if (!iterator && _.isEmpty(obj)) {
+return Infinity;
     }
     var result = {computed : Infinity, value: Infinity};
     each(obj, function(value, index, list) {
@@ -51901,9 +51952,11 @@ function assert(expression) {
       var a = left.criteria;
       var b = right.criteria;
       if (a !== b) {
-        if (a > b || a === void 0) { return 1;
+        if (a > b || a === void 0) {
+return 1;
         }
-        if (a < b || b === void 0) { return -1;
+        if (a < b || b === void 0) {
+return -1;
         }
       }
       return left.index < right.index ? -1 : 1;
@@ -51934,7 +51987,8 @@ function assert(expression) {
   // criterion.
   _.countBy = function(obj, value, context) {
     return group(obj, value, context, function(result, key) {
-      if (!_.has(result, key)) { result[key] = 0;
+      if (!_.has(result, key)) {
+result[key] = 0;
       }
       result[key]++;
     });
@@ -51955,18 +52009,22 @@ function assert(expression) {
 
   // Safely convert anything iterable into a real, live array.
   _.toArray = function(obj) {
-    if (!obj) { return [];
+    if (!obj) {
+return [];
     }
-    if (_.isArray(obj)) { return slice.call(obj);
+    if (_.isArray(obj)) {
+return slice.call(obj);
     }
-    if (obj.length === +obj.length) { return _.map(obj, _.identity);
+    if (obj.length === +obj.length) {
+return _.map(obj, _.identity);
     }
     return _.values(obj);
   };
 
   // Return the number of elements in an object.
   _.size = function(obj) {
-    if (obj == null) { return 0;
+    if (obj == null) {
+return 0;
     }
     return (obj.length === +obj.length) ? obj.length : _.keys(obj).length;
   };
@@ -51978,7 +52036,8 @@ function assert(expression) {
   // values in the array. Aliased as `head` and `take`. The **guard** check
   // allows it to work with `_.map`.
   _.first = _.head = _.take = function(array, n, guard) {
-    if (array == null) { return void 0;
+    if (array == null) {
+return void 0;
     }
     return (n != null) && !guard ? slice.call(array, 0, n) : array[0];
   };
@@ -51994,7 +52053,8 @@ function assert(expression) {
   // Get the last element of an array. Passing **n** will return the last N
   // values in the array. The **guard** check allows it to work with `_.map`.
   _.last = function(array, n, guard) {
-    if (array == null) { return void 0;
+    if (array == null) {
+return void 0;
     }
     if ((n != null) && !guard) {
       return slice.call(array, Math.max(array.length - n, 0));
@@ -52099,7 +52159,8 @@ function assert(expression) {
   // pairs, or two parallel arrays of the same length -- one of keys, and one of
   // the corresponding values.
   _.object = function(list, values) {
-    if (list == null) return {};
+    if (list == null) {
+return };
     var result = {};
     for (var i = 0, l = list.length; i < l; i++) {
       if (values) {
@@ -52118,7 +52179,8 @@ function assert(expression) {
   // If the array is large and already in sort order, pass `true`
   // for **isSorted** to use binary search.
   _.indexOf = function(array, item, isSorted) {
-    if (array == null) { return -1;
+    if (array == null) {
+return -1;
     }
     var i = 0, l = array.length;
     if (isSorted) {
@@ -52129,9 +52191,12 @@ function assert(expression) {
         return array[i] === item ? i : -1;
       }
     }
-    if (nativeIndexOf && array.indexOf === nativeIndexOf) { return array.indexOf(item, isSorted);
+    if (nativeIndexOf && array.indexOf === nativeIndexOf) {
+return array.indexOf(item, isSorted);
     }
-    for (; i < l; i++) { if (array[i] === item) { return i;
+    for (; i < l; i++) {
+if (array[i] === item) {
+return i;
     }
     }
     return -1;
@@ -52139,14 +52204,17 @@ function assert(expression) {
 
   // Delegates to **ECMAScript 5**'s native `lastIndexOf` if available.
   _.lastIndexOf = function(array, item, from) {
-    if (array == null) { return -1;
+    if (array == null) {
+return -1;
     }
     var hasIndex = from != null;
     if (nativeLastIndexOf && array.lastIndexOf === nativeLastIndexOf) {
       return hasIndex ? array.lastIndexOf(item, from) : array.lastIndexOf(item);
     }
     var i = (hasIndex ? from : array.length);
-    while (i--) { if (array[i] === item) { return i;
+    while (i--) {
+if (array[i] === item) {
+return i;
     }
     }
     return -1;
@@ -52166,7 +52234,7 @@ function assert(expression) {
     var idx = 0;
     var range = new Array(len);
 
-    while(idx < len) {
+    while (idx < len) {
       range[idx++] = start;
       start += step;
     }
@@ -52181,7 +52249,8 @@ function assert(expression) {
   // optionally). Delegates to **ECMAScript 5**'s native `Function.bind` if
   // available.
   _.bind = function(func, context) {
-    if (func.bind === nativeBind && nativeBind) { return nativeBind.apply(func, slice.call(arguments, 1));
+    if (func.bind === nativeBind && nativeBind) {
+return nativeBind.apply(func, slice.call(arguments, 1));
     }
     var args = slice.call(arguments, 2);
     return function() {
@@ -52202,7 +52271,8 @@ function assert(expression) {
   // all callbacks defined on an object belong to it.
   _.bindAll = function(obj) {
     var funcs = slice.call(arguments, 1);
-    if (funcs.length === 0) { funcs = _.functions(obj);
+    if (funcs.length === 0) {
+funcs = _.functions(obj);
     }
     each(funcs, function(f) { obj[f] = _.bind(obj[f], obj); });
     return obj;
@@ -52268,13 +52338,15 @@ function assert(expression) {
       var context = this, args = arguments;
       var later = function() {
         timeout = null;
-        if (!immediate) { result = func.apply(context, args);
+        if (!immediate) {
+result = func.apply(context, args);
         }
       };
       var callNow = immediate && !timeout;
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
-      if (callNow) { result = func.apply(context, args);
+      if (callNow) {
+result = func.apply(context, args);
       }
       return result;
     };
@@ -52285,7 +52357,8 @@ function assert(expression) {
   _.once = function(func) {
     var ran = false, memo;
     return function() {
-      if (ran) { return memo;
+      if (ran) {
+return memo;
       }
       ran = true;
       memo = func.apply(this, arguments);
@@ -52320,7 +52393,8 @@ function assert(expression) {
 
   // Returns a function that will only be executed after being called N times.
   _.after = function(times, func) {
-    if (times <= 0) { return func();
+    if (times <= 0) {
+return func();
     }
     return function() {
       if (--times < 1) {
@@ -52335,10 +52409,13 @@ function assert(expression) {
   // Retrieve the names of an object's properties.
   // Delegates to **ECMAScript 5**'s native `Object.keys`
   _.keys = nativeKeys || function(obj) {
-    if (obj !== Object(obj)) { throw new TypeError('Invalid object');
+    if (obj !== Object(obj)) {
+throw new TypeError('Invalid object');
     }
     var keys = [];
-    for (var key in obj) { if (_.has(obj, key)) { keys[keys.length] = key;
+    for (var key in obj) {
+if (_.has(obj, key)) {
+keys[keys.length] = key;
     }
     }
     return keys;
@@ -52347,7 +52424,9 @@ function assert(expression) {
   // Retrieve the values of an object's properties.
   _.values = function(obj) {
     var values = [];
-    for (var key in obj) { if (_.has(obj, key)) { values.push(obj[key]);
+    for (var key in obj) {
+if (_.has(obj, key)) {
+values.push(obj[key]);
     }
     }
     return values;
@@ -52356,7 +52435,9 @@ function assert(expression) {
   // Convert an object into a list of `[key, value]` pairs.
   _.pairs = function(obj) {
     var pairs = [];
-    for (var key in obj) { if (_.has(obj, key)) { pairs.push([key, obj[key]]);
+    for (var key in obj) {
+if (_.has(obj, key)) {
+pairs.push([key, obj[key]]);
     }
     }
     return pairs;
@@ -52365,7 +52446,9 @@ function assert(expression) {
   // Invert the keys and values of an object. The values must be serializable.
   _.invert = function(obj) {
     var result = {};
-    for (var key in obj) { if (_.has(obj, key)) { result[obj[key]] = key;
+    for (var key in obj) {
+if (_.has(obj, key)) {
+result[obj[key]] = key;
     }
     }
     return result;
@@ -52376,7 +52459,8 @@ function assert(expression) {
   _.functions = _.methods = function(obj) {
     var names = [];
     for (var key in obj) {
-      if (_.isFunction(obj[key])) { names.push(key);
+      if (_.isFunction(obj[key])) {
+names.push(key);
       }
     }
     return names.sort();
@@ -52399,7 +52483,8 @@ function assert(expression) {
     var copy = {};
     var keys = concat.apply(ArrayProto, slice.call(arguments, 1));
     each(keys, function(key) {
-      if (key in obj) { copy[key] = obj[key];
+      if (key in obj) {
+copy[key] = obj[key];
       }
     });
     return copy;
@@ -52410,7 +52495,8 @@ function assert(expression) {
     var copy = {};
     var keys = concat.apply(ArrayProto, slice.call(arguments, 1));
     for (var key in obj) {
-      if (!_.contains(keys, key)) { copy[key] = obj[key];
+      if (!_.contains(keys, key)) {
+copy[key] = obj[key];
       }
     }
     return copy;
@@ -52421,7 +52507,8 @@ function assert(expression) {
     each(slice.call(arguments, 1), function(source) {
       if (source) {
         for (var prop in source) {
-          if (obj[prop] == null) { obj[prop] = source[prop];
+          if (obj[prop] == null) {
+obj[prop] = source[prop];
           }
         }
       }
@@ -52431,7 +52518,8 @@ function assert(expression) {
 
   // Create a (shallow-cloned) duplicate of an object.
   _.clone = function(obj) {
-    if (!_.isObject(obj)) { return obj;
+    if (!_.isObject(obj)) {
+return obj;
     }
     return _.isArray(obj) ? obj.slice() : _.extend({}, obj);
   };
@@ -52448,19 +52536,24 @@ function assert(expression) {
   var eq = function(a, b, aStack, bStack) {
     // Identical objects are equal. `0 === -0`, but they aren't identical.
     // See the Harmony `egal` proposal: http://wiki.ecmascript.org/doku.php?id=harmony:egal.
-    if (a === b) { return a !== 0 || 1 / a == 1 / b;
+    if (a === b) {
+return a !== 0 || 1 / a == 1 / b;
     }
     // A strict comparison is necessary because `null == undefined`.
-    if (a == null || b == null) { return a === b;
+    if (a == null || b == null) {
+return a === b;
     }
     // Unwrap any wrapped objects.
-    if (a instanceof _) { a = a._wrapped;
+    if (a instanceof _) {
+a = a._wrapped;
     }
-    if (b instanceof _) { b = b._wrapped;
+    if (b instanceof _) {
+b = b._wrapped;
     }
     // Compare `[[Class]]` names.
     var className = toString.call(a);
-    if (className != toString.call(b)) { return false;
+    if (className != toString.call(b)) {
+return false;
     }
     switch (className) {
       // Strings, numbers, dates, and booleans are compared by value.
@@ -52485,7 +52578,8 @@ function assert(expression) {
                a.multiline == b.multiline &&
                a.ignoreCase == b.ignoreCase;
     }
-    if (typeof a != 'object' || typeof b != 'object') { return false;
+    if (typeof a != 'object' || typeof b != 'object') {
+return false;
     }
     // Assume equality for cyclic structures. The algorithm for detecting cyclic
     // structures is adapted from ES 5.1 section 15.12.3, abstract operation `JO`.
@@ -52493,7 +52587,8 @@ function assert(expression) {
     while (length--) {
       // Linear search. Performance is inversely proportional to the number of
       // unique nested structures.
-      if (aStack[length] == a) { return bStack[length] == b;
+      if (aStack[length] == a) {
+return bStack[length] == b;
       }
     }
     // Add the first object to the stack of traversed objects.
@@ -52508,7 +52603,8 @@ function assert(expression) {
       if (result) {
         // Deep compare the contents, ignoring non-numeric properties.
         while (size--) {
-          if (!(result = eq(a[size], b[size], aStack, bStack))) { break;
+          if (!(result = eq(a[size], b[size], aStack, bStack))) {
+break;
           }
         }
       }
@@ -52526,14 +52622,16 @@ function assert(expression) {
           // Count the expected number of properties.
           size++;
           // Deep compare each member.
-          if (!(result = _.has(b, key) && eq(a[key], b[key], aStack, bStack))) { break;
+          if (!(result = _.has(b, key) && eq(a[key], b[key], aStack, bStack))) {
+break;
           }
         }
       }
       // Ensure that both objects contain the same number of properties.
       if (result) {
         for (key in b) {
-          if (_.has(b, key) && !(size--)) { break;
+          if (_.has(b, key) && !(size--)) {
+break;
           }
         }
         result = !size;
@@ -52553,11 +52651,15 @@ function assert(expression) {
   // Is a given array, string, or object empty?
   // An "empty" object has no enumerable own-properties.
   _.isEmpty = function(obj) {
-    if (obj == null) { return true;
+    if (obj == null) {
+return true;
     }
-    if (_.isArray(obj) || _.isString(obj)) { return obj.length === 0;
+    if (_.isArray(obj) || _.isString(obj)) {
+return obj.length === 0;
     }
-    for (var key in obj) { if (_.has(obj, key)) { return false;
+    for (var key in obj) {
+if (_.has(obj, key)) {
+return false;
     }
     }
     return true;
@@ -52650,7 +52752,8 @@ function assert(expression) {
   // Run a function **n** times.
   _.times = function(n, iterator, context) {
     var accum = Array(n);
-    for (var i = 0; i < n; i++) { accum[i] = iterator.call(context, i);
+    for (var i = 0; i < n; i++) {
+accum[i] = iterator.call(context, i);
     }
     return accum;
   };
@@ -52686,7 +52789,8 @@ function assert(expression) {
   // Functions for escaping and unescaping strings to/from HTML interpolation.
   _.each(['escape', 'unescape'], function(method) {
     _[method] = function(string) {
-      if (string == null) { return '';
+      if (string == null) {
+return '';
       }
       return ('' + string).replace(entityRegexes[method], function(match) {
         return entityMap[method][match];
@@ -52697,7 +52801,8 @@ function assert(expression) {
   // If the value of the named property is a function then invoke it;
   // otherwise, return it.
   _.result = function(object, property) {
-    if (object == null) { return null;
+    if (object == null) {
+return null;
     }
     var value = object[property];
     return _.isFunction(value) ? value.call(object) : value;
@@ -52786,7 +52891,8 @@ function assert(expression) {
     source += "';\n";
 
     // If a variable is not specified, place data values in local scope.
-    if (!settings.variable) { source = 'with(obj||{}){\n' + source + '}\n';
+    if (!settings.variable) {
+source = 'with(obj||{}){\n' + source + '}\n';
     }
 
     source = "var __t,__p='',__j=Array.prototype.join," +
@@ -52800,7 +52906,8 @@ function assert(expression) {
       throw e;
     }
 
-    if (data) { return render(data, _);
+    if (data) {
+return render(data, _);
     }
     var template = function(data) {
       return render.call(this, data, _);
@@ -52837,7 +52944,8 @@ function assert(expression) {
     _.prototype[name] = function() {
       var obj = this._wrapped;
       method.apply(obj, arguments);
-      if ((name == 'shift' || name == 'splice') && obj.length === 0) { delete obj[0];
+      if ((name == 'shift' || name == 'splice') && obj.length === 0) {
+delete obj[0];
       }
       return result.call(this, obj);
     };
@@ -53194,7 +53302,8 @@ var JSHINT = (function () {
 
   function combine(dest, src) {
     Object.keys(src).forEach(function (name) {
-      if (JSHINT.blacklist.hasOwnProperty(name)) { return;
+      if (JSHINT.blacklist.hasOwnProperty(name)) {
+return;
       }
       dest[name] = src[name];
     });
@@ -53549,7 +53658,6 @@ var JSHINT = (function () {
         }
 
         if (numvals.indexOf(key) >= 0) {
-
           // GH988 - numeric options can be disabled by setting them to `false`
           if (val !== "false") {
             val = +val;
@@ -54295,7 +54403,8 @@ var JSHINT = (function () {
     ];
 
     function walkPrototype(obj) {
-      if (typeof obj !== "object") { return;
+      if (typeof obj !== "object") {
+return;
       }
       return obj.right === "prototype" ? obj : walkPrototype(obj.left);
     }
@@ -54311,7 +54420,8 @@ var JSHINT = (function () {
     }
 
     var prototype = walkPrototype(left);
-    if (prototype) { return walkNative(prototype);
+    if (prototype) {
+return walkNative(prototype);
     }
   }
 
@@ -54824,7 +54934,6 @@ var JSHINT = (function () {
         error("E021", state.tokens.next, "{", state.tokens.next.value);
       }
     } else {
-
       // check to avoid let declaration not within a block
       funct["(nolet)"] = true;
 
@@ -54846,7 +54955,8 @@ var JSHINT = (function () {
       funct["(verb)"] = null;
     }
 
-    if (!ordinary || !state.option.funcscope) { scope = s;
+    if (!ordinary || !state.option.funcscope) {
+scope = s;
     }
     inblock = b;
     if (ordinary && state.option.noempty && (!a || a.length === 0)) {
@@ -54921,13 +55031,17 @@ var JSHINT = (function () {
         // the name is in a block scope.
         switch (block ? block[v]["(type)"] : funct[v]) {
         case "unused":
-          if (block) { block[v]["(type)"] = "var";
-          } else { funct[v] = "var";
+          if (block) {
+block[v]["(type)"] = "var";
+          } else {
+funct[v] = "var";
           }
           break;
         case "unction":
-          if (block) { block[v]["(type)"] = "function";
-          } else { funct[v] = "function";
+          if (block) {
+block[v]["(type)"] = "function";
+          } else {
+funct[v] = "function";
           }
           this["function"] = true;
           break;
@@ -54955,7 +55069,6 @@ var JSHINT = (function () {
           if (!(anonname === "typeof" || anonname === "delete") ||
             (state.tokens.next && (state.tokens.next.value === "." ||
               state.tokens.next.value === "["))) {
-
             // if we're in a list comprehension, variables are declared
             // locally and used before being defined. So we check
             // the presence of the given variable in the comp array
@@ -55003,7 +55116,6 @@ var JSHINT = (function () {
             if (!(anonname === "typeof" || anonname === "delete") ||
               (state.tokens.next &&
                 (state.tokens.next.value === "." || state.tokens.next.value === "["))) {
-
               isundef(funct, "W117", state.tokens.curr, v);
             }
             funct[v] = true;
@@ -55105,7 +55217,7 @@ var JSHINT = (function () {
       return that;
     }
     while (true) {
-      if (!(expr = expression(10)))  {
+      if (!(expr = expression(10))) {
         break;
       }
       that.exprs.push(expr);
@@ -55901,7 +56013,8 @@ var JSHINT = (function () {
     funct["(lastcharacter)"] = state.tokens.curr.character;
 
     _.map(Object.keys(funct), function (key) {
-      if (key[0] === "(") { return;
+      if (key[0] === "(") {
+return;
       }
       funct["(blockscope)"].unshadow(key);
     });
@@ -56554,7 +56667,6 @@ var JSHINT = (function () {
     }
     if (inblock) {
       warning("W082", state.tokens.curr);
-
     }
     var i = identifier();
     if (funct[i] === "const") {
@@ -56996,7 +57108,6 @@ var JSHINT = (function () {
       block(true, true);
       funct["(breakage)"] -= 1;
       funct["(loopage)"] -= 1;
-
     }
     // unstack loop blockscope
     if (letscope) {
@@ -57540,7 +57651,7 @@ var JSHINT = (function () {
       },
 
       getlabel: function (l) {
-        for (var i = _variables.length - 1 ; i >= 0; --i) {
+        for (var i = _variables.length - 1; i >= 0; --i) {
           if (_.has(_variables[i], l) && !_variables[i][l]["(shadowed)"]) {
             return _variables[i];
           }
@@ -57947,7 +58058,6 @@ var JSHINT = (function () {
           warnUnused(key, declared[key], "var");
         }
       }
-
     } catch (err) {
       if (err && err.name === "JSHintError") {
         var nt = state.tokens.next || {};
@@ -58965,7 +59075,6 @@ Lexer.prototype = {
 
     while (this.peek() !== quote) {
       while (this.peek() === "") { // End Of Line
-
         // If an EOL is not preceded by a backslash, show a warning
         // and proceed like it was a legit multi-line string where
         // author simply forgot to escape the newline symbol.
@@ -60740,7 +60849,7 @@ exports.prototypejs = {
   Selector          : false,
   Template          : false,
   Toggle            : false,
-  Try               : false,
+  Try : false,
   Autocompleter     : false,
   Builder           : false,
   Control           : false,
@@ -60763,6 +60872,7 @@ exports.yui = {
 
 },{}]},{},["nr+AlQ"])
 JSHINT = require('jshint').JSHINT;
-if (typeof exports === 'object' && exports) { exports.JSHINT = JSHINT;
+if (typeof exports === 'object' && exports) {
+exports.JSHINT = JSHINT;
 }
 }());

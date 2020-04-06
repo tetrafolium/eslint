@@ -61,18 +61,14 @@ ruleTester.run("semi-style", rule, {
         {
             code: `
                 do {
-                    }
-                while (a)
-            `,
+                    } while (a)`,
             options: ["first"]
         },
         {
             code: `
                 do {
                     foo;
-                }
-                while (a)
-            `,
+                } while (a)`,
             options: ["first"]
         },
         {
@@ -122,9 +118,7 @@ ruleTester.run("semi-style", rule, {
         {
             code: `
                 do {
-                    }
-                while (a)
-            `,
+                    } while (a)`,
             options: ["last"]
         }
     ],

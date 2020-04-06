@@ -3,7 +3,6 @@
 /* eslint no-trailing-spaces: "error" */
 function f() {
     if (true) {
-
     } else {
         return 1;
     }

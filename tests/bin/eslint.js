@@ -130,9 +130,8 @@ describe("bin/eslint.js", () => {
                         fileName =>
                             /^\.eslintrc(?:\.(?:js|yaml|yml|json))?$/u
                                 .test(fileName)
-                    )
-                ) {
-                    return Promise.resolve(true);
+                    ) {
+                ) return Promise.resolve(true);
                 }
                 const child = runESLint(
                     ["--stdin"], { cwd: "/", env: { HOME: "/" } }

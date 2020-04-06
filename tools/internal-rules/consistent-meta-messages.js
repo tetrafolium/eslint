@@ -36,7 +36,6 @@ function getPropertyFromObject(property, node) {
  */
 function checkMetaMessages(context, exportsNode) {
     if (exportsNode.type !== "ObjectExpression") {
-
         // if the exported node is not the correct format, "internal-no-invalid-meta" will already report this.
         return;
     }

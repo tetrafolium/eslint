@@ -10,7 +10,8 @@ if (a) {
       } // <-
     } // <-
 
-  while (k) { l++;
+  while (k) {
+l++;
   }
   while (m) {
   n--; // ->
@@ -21,7 +22,7 @@ if (a) {
   q; // NO ERROR: DON'T VALIDATE MULTILINE STATEMENTS
     o = p +
     q;
-    } while(r); // <-
+    } while (r); // <-
 
   for (var s in t) {
     u++;
@@ -263,8 +264,10 @@ a.b()
   }).d.e;
 
 if (a == 'b') {
-  if (c && d) { e = f
-  else { g('h').i('j')
+  if (c && d) {
+e = f
+  else {
+g('h').i('j')
 }
   }
   }
@@ -277,7 +280,8 @@ a = function (b, c) {
 
     if (!j) k('l', (m = n))
     if (o) p
-    else if (q) { r
+    else if (q) {
+r
   }
     })
 }
@@ -382,14 +386,14 @@ case (c // ->
 
 if (a) {
   b();
-}
-else {
+} else {
 c(); // ->
   d();
     e(); // <-
 }
 
-if (a) { b();
+if (a) {
+b();
 } else {
 c(); // ->
   d();
@@ -398,18 +402,19 @@ c(); // ->
 
 if (a) {
   b();
-} else { c();
+} else {
+c();
 }
 
 if (a) {
   b();
-}
-else { c();
+} else {
+c();
 }
 
 a();
 
-if( "very very long multi line" +
+if ( "very very long multi line" +
       "with weird indentation" ) {
   b();
 a(); // ->
@@ -467,7 +472,7 @@ function c(d) {
 }
 
 function a(b) {
-  switch(x) {
+  switch (x) {
     case 1:
       if (foo) {
         return 5;
@@ -476,14 +481,14 @@ function a(b) {
 }
 
 function a(b) {
-  switch(x) {
+  switch (x) {
     case 1:
       c;
   }
 }
 
 function a(b) {
-  switch(x) {
+  switch (x) {
     case 1: c;
   }
 }
@@ -500,7 +505,7 @@ function test() {
 }
 
 function a(b) {
-  switch(x) {
+  switch (x) {
     case 1:
         { // <-
       a(); // ->

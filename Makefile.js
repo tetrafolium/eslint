@@ -288,7 +288,6 @@ function generatePrerelease(prereleaseId) {
      * 4.0.1-alpha.0 --> next major = 5, current major = 4
      */
     if (semver.major(releaseInfo.version) === semver.major(nextMajor)) {
-
         /*
          * This prerelease is for a major release (not preminor/prepatch).
          * Blog post generation logic needs to be aware of this (as well as
@@ -502,7 +501,6 @@ target.fuzz = function({ amount = 1000, fuzzBrokenAutofixes = false } = {}) {
     const fuzzResults = fuzzerRunner.run({ amount, fuzzBrokenAutofixes });
 
     if (fuzzResults.length) {
-
         const uniqueStackTraceCount = new Set(fuzzResults.map(result => result.error)).size;
 
         echo(`The fuzzer reported ${fuzzResults.length} error${fuzzResults.length === 1 ? "" : "s"} with a total of ${uniqueStackTraceCount} unique stack trace${uniqueStackTraceCount === 1 ? "" : "s"}.`);
@@ -524,12 +522,13 @@ target.fuzz = function({ amount = 1000, fuzzBrokenAutofixes = false } = {}) {
             do {
                 fuzzLogPath = path.join(DEBUG_DIR, `fuzzer-log-${fileSuffix}.json`);
                 fileSuffix++;
-            } while (test("-f", fuzzLogPath));
+            } while (test("-f", fuzzLogPath)) {
+;
 
             formattedResults.to(fuzzLogPath);
 
             // TODO: (not-an-aardvark) Create a better way to isolate and test individual fuzzer errors from the log file
-            echo(`More details can be found in ${fuzzLogPath}.`);
+            echo(`More details can be found in $fuzzLogPath}.`);
         }
 
         exit(1);
@@ -613,7 +612,6 @@ target.gensite = function(prereleaseVersion) {
             htmlFullPath = fullPath.replace(".md", ".html");
 
         if (test("-f", fullPath)) {
-
             rm("-rf", fullPath);
 
             if (filePath.indexOf(".md") >= 0 && test("-f", htmlFullPath)) {
@@ -647,7 +645,6 @@ target.gensite = function(prereleaseVersion) {
 
     tempFiles.forEach((filename, i) => {
         if (test("-f", filename) && path.extname(filename) === ".md") {
-
             const rulesUrl = "https://github.com/eslint/eslint/tree/master/lib/rules/",
                 docsUrl = "https://github.com/eslint/eslint/tree/master/docs/rules/",
                 baseName = path.basename(filename),
@@ -663,7 +660,6 @@ target.gensite = function(prereleaseVersion) {
 
             // 5. Prepend page title and layout variables at the top of rules
             if (path.dirname(filename).indexOf("rules") >= 0) {
-
                 // Find out if the rule requires a special docs portion (e.g. if it is recommended and/or fixable)
                 const rule = rules.get(ruleName);
                 const isRecommended = rule && rule.meta.docs.recommended;
@@ -681,7 +677,6 @@ target.gensite = function(prereleaseVersion) {
                     ruleType = `rule_type: ${rule.meta.type}`;
                 }
             } else {
-
                 // extract the title from the file itself
                 title = text.match(/#([^#].+)\n/u);
                 if (title) {
@@ -817,7 +812,6 @@ target.checkRuleFiles = function() {
             console.error("Missing documentation for rule %s", basename);
             errors++;
         } else {
-
             // check for proper doc format
             if (!hasIdInTitle(basename)) {
                 console.error("Missing id in the doc page's title of rule %s", basename);

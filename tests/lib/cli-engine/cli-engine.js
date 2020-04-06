@@ -2138,7 +2138,6 @@ describe("CLIEngine", () => {
                 try {
                     fs.unlinkSync(filePath);
                 } catch (ex) {
-
                     /*
                      * we don't care if the file didn't exist, since our
                      * intention was to remove the file
@@ -2174,7 +2173,6 @@ describe("CLIEngine", () => {
                     try {
                         fs.unlinkSync("./tmp/.cacheFileDir/.cache_hashOfCurrentWorkingDirectory");
                     } catch (ex) {
-
                         /*
                          * we don't care if the file didn't exist, since our
                          * intention was to remove the file

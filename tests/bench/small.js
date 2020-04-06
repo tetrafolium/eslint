@@ -82,16 +82,19 @@ ko.utils = (function () {
         while (
             div.innerHTML = '<!--[if gt IE ' + (++version) + ']><i></i><![endif]-->',
             iElems[0]
-        ) {}
+        ) {
+}
         return version > 4 ? version : undefined;
     }());
     var isIe6 = ieVersion === 6,
         isIe7 = ieVersion === 7;
 
     function isClickOnCheckableElement(element, eventType) {
-        if ((ko.utils.tagNameLower(element) !== "input") || !element.type) { return false;
+        if ((ko.utils.tagNameLower(element) !== "input") || !element.type) {
+return false;
         }
-        if (eventType.toLowerCase() != "click") { return false;
+        if (eventType.toLowerCase() != "click") {
+return false;
         }
         var inputType = element.type;
         return (inputType == "checkbox") || (inputType == "radio");
@@ -191,8 +194,8 @@ ko.utils = (function () {
 
         extend: function (target, source) {
             if (source) {
-                for(var prop in source) {
-                    if(source.hasOwnProperty(prop)) {
+                for (var prop in source) {
+                    if (source.hasOwnProperty(prop)) {
                         target[prop] = source[prop];
                     }
                 }
@@ -429,8 +432,7 @@ ko.utils = (function () {
                     var event = document.createEvent(eventCategory);
                     event.initEvent(eventType, true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, element);
                     element.dispatchEvent(event);
-                }
-                else {
+                } else {
                     throw new Error("The supplied element doesn't support dispatchEvent");
                 }
             } else if (typeof element.fireEvent != "undefined") {
@@ -440,8 +442,7 @@ ko.utils = (function () {
                     element.checked = element.checked !== true;
                 }
                 element.fireEvent("on" + eventType);
-            }
-            else {
+            } else {
                 throw new Error("Browser doesn't support triggering events");
             }
         },
@@ -493,8 +494,8 @@ ko.utils = (function () {
             if (ieVersion <= 7) {
                 try {
                     element.mergeAttributes(document.createElement("<input name='" + element.name + "'/>"), false);
-                }
-                catch(e) {} // For IE9 with doc mode "IE9 Standards" and browser mode "IE9 Compatibility View"
+                } catch (e) {
+} // For IE9 with doc mode "IE9 Standards" and browser mode "IE9 Compatibility View"
             }
         },
 
@@ -583,7 +584,7 @@ ko.utils = (function () {
             var url = urlOrForm;
 
             // If we were given a form, use its 'action' URL and pick out any requested field values
-            if((typeof urlOrForm == 'object') && (ko.utils.tagNameLower(urlOrForm) === "form")) {
+            if ((typeof urlOrForm == 'object') && (ko.utils.tagNameLower(urlOrForm) === "form")) {
                 var originalForm = urlOrForm;
                 url = originalForm.action;
                 for (var i = includeFields.length - 1; i >= 0; i--) {
@@ -1164,19 +1165,20 @@ ko.observable = function (initialValue) {
             if (!observable['equalityComparer'] || !observable['equalityComparer'](_latestValue, arguments[0])) {
                 observable.valueWillMutate();
                 _latestValue = arguments[0];
-                if (DEBUG) { observable._latestValue = _latestValue;
+                if (DEBUG) {
+observable._latestValue = _latestValue;
                 }
                 observable.valueHasMutated();
             }
             return this; // Permits chained assignments
-        }
-        else {
+        } else {
             // Read
             ko.dependencyDetection.registerDependency(observable); // The caller only needs to be notified of changes if they did a "read" operation
             return _latestValue;
         }
     }
-    if (DEBUG) { observable._latestValue = _latestValue;
+    if (DEBUG) {
+observable._latestValue = _latestValue;
     }
     ko.subscribable.call(observable);
     observable.peek = function() { return _latestValue };
@@ -1199,9 +1201,11 @@ var protoProperty = ko.observable.protoProperty = "__ko_proto__";
 ko.observable['fn'][protoProperty] = ko.observable;
 
 ko.hasPrototype = function(instance, prototype) {
-    if ((instance === null) || (instance === undefined) || (instance[protoProperty] === undefined)) { return false;
+    if ((instance === null) || (instance === undefined) || (instance[protoProperty] === undefined)) {
+return false;
     }
-    if (instance[protoProperty] === prototype) { return true;
+    if (instance[protoProperty] === prototype) {
+return true;
     }
     return ko.hasPrototype(instance[protoProperty], prototype); // Walk the prototype chain
 };
@@ -1565,7 +1569,8 @@ ko.dependentObservable = function (evaluatorFunctionOrOptions, evaluatorFunction
                 dependentObservable["notifySubscribers"](_latestValue, "beforeChange");
 
                 _latestValue = newValue;
-                if (DEBUG) { dependentObservable._latestValue = _latestValue;
+                if (DEBUG) {
+dependentObservable._latestValue = _latestValue;
                 }
                 dependentObservable["notifySubscribers"](_latestValue);
             }
@@ -1815,7 +1820,7 @@ ko.exportSymbol('toJSON', ko.toJSON);
         writeValue: function(element, value) {
             switch (ko.utils.tagNameLower(element)) {
                 case 'option':
-                    switch(typeof value) {
+                    switch (typeof value) {
                         case "string":
                             ko.utils.domData.set(element, ko.bindingHandlers.options.optionValueDomDataKey, undefined);
                             if (hasDomDataExpandoProperty in element) { // IE <= 8 throws errors if you delete non-existent properties from a DOM node
@@ -1913,7 +1918,8 @@ ko.expressionRewriting = (function () {
         var str = ko.utils.stringTrim(objectLiteralString);
 
         // Trim braces '{' surrounding the whole object literal
-        if (str.charCodeAt(0) === 123) { str = str.slice(1, -1);
+        if (str.charCodeAt(0) === 123) {
+str = str.slice(1, -1);
         }
 
         // Split into tokens
@@ -1928,8 +1934,8 @@ ko.expressionRewriting = (function () {
                 // A comma signals the end of a key/value pair if depth is zero
                 if (c === 44) { // ","
                     if (depth <= 0) {
-                        if (key)
-                            result.push(values ? {key: key, value: values.join('')} : {'unknown': key});
+                        if (key) {
+                            result.push(values ? key: key, value: values.join('')} : {'unknown': key});
                         key = values = depth = 0;
                         continue;
                     }
@@ -2807,9 +2813,11 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
             case 1:
             case 8:
                 var context = ko.storedBindingContextForNode(node);
-                if (context) { return context;
+                if (context) {
+return context;
                 }
-                if (node.parentNode) { return ko.contextFor(node.parentNode);
+                if (node.parentNode) {
+return ko.contextFor(node.parentNode);
                 }
                 break;
         }
@@ -3072,8 +3080,8 @@ ko.bindingHandlers['foreach'] = {
             // If unwrappedValue is the array, pass in the wrapped value on its own
             // The value will be unwrapped and tracked within the template binding
             // (See https://github.com/SteveSanderson/knockout/issues/523)
-            if ((!unwrappedValue) || typeof unwrappedValue.length == "number")
-                return { 'foreach': modelValue, 'templateEngine': ko.nativeTemplateEngine.instance };
+            if ((!unwrappedValue) || typeof unwrappedValue.length == "number") {
+                return  'foreach': modelValue, 'templateEngine': ko.nativeTemplateEngine.instance };
 
             // If unwrappedValue.data is the array, preserve all relevant options and unwrap again value so we get updates
             ko.utils.unwrapObservable(modelValue);
@@ -3116,7 +3124,7 @@ ko.bindingHandlers['hasfocus'] = {
                 var active;
                 try {
                     active = ownerDoc.activeElement;
-                } catch(e) {
+                } catch (e) {
                     // IE9 throws if you access activeElement during page load (see issue #703)
                     active = ownerDoc.body;
                 }
@@ -3396,7 +3404,8 @@ ko.bindingHandlers['submit'] = {
         ko.utils.registerEventHandler(element, "submit", function (event) {
             var handlerReturnValue;
             var value = valueAccessor();
-            try { handlerReturnValue = value.call(bindingContext['$data'], element); }
+            try {
+handlerReturnValue = value.call(bindingContext['$data'], element); }
             finally {
                 if (handlerReturnValue !== true) { // Normally we want to prevent default action. Developer can override this be explicitly returning true.
                     if (event.preventDefault) {
@@ -4346,7 +4355,8 @@ ko.exportSymbol('nativeTemplateEngine', ko.nativeTemplateEngine);
                     // Since 1.0.0pre, custom tags should append markup to an array called "__"
                     return 2; // Final version of jquery.tmpl
                 }
-            } catch(ex) { /* Apparently not the version we were looking for */ }
+            } catch (ex) {
+/* Apparently not the version we were looking for */ }
 
             return 1; // Any older version that we don't support
         })();

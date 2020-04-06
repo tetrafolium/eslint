@@ -33,7 +33,8 @@ ruleTester.run("nonblock-statement-body-position", rule, {
         "for (foo of bar) baz;",
         "if (foo) bar; else baz;",
         `
-            if (foo) { bar(
+            if (foo) {
+bar(
                 baz
             );
             }
@@ -76,14 +77,12 @@ ruleTester.run("nonblock-statement-body-position", rule, {
             code: `
                 do {
                     bar();
-                }
-                while (foo)
-            `,
+                } while (foo)`,
             options: ["below"]
         },
         {
             code: `
-                for (;foo;) {
+                for (; foo;) {
                     bar();
                 }
             `,
@@ -133,7 +132,8 @@ ruleTester.run("nonblock-statement-body-position", rule, {
         // 'overrides' option
         {
             code: "if (foo) bar();",
-            options: ["beside", { overrides: { while { : "below" } }]
+            options: ["beside", { overrides: { while {
+: "below" } }]
         },
         {
             code: `
@@ -142,7 +142,8 @@ ruleTester.run("nonblock-statement-body-position", rule, {
                 }
             }
             `,
-            options: ["beside", { overrides: { while { : "below" } }]
+            options: ["beside", { overrides: { while {
+: "below" } }]
         },
         {
             code: `
@@ -151,19 +152,19 @@ ruleTester.run("nonblock-statement-body-position", rule, {
                 }
             }
             `,
-            options: ["beside", { overrides: { while: "any" } }]
+            options: ["beside", { overrides: { while : "any" } }]
         },
         {
             code: "while (foo) bar();",
-            options: ["beside", { overrides: { while: "any" } }]
+            options: ["beside", { overrides: { while : "any" } }]
         },
         {
             code: "while (foo) bar();",
-            options: ["any", { overrides: { while: "beside" } }]
+            options: ["any", { overrides: { while : "beside" } }]
         },
         {
             code: " ",
-            options: ["any", { overrides: { if: "any", else: "any", for: "any", while: "any", do: "any" } }]
+            options: ["any", { overrides: { if : "any", else : "any", for : "any", while : "any", do : "any" } }]
         },
 
         // ignore 'else if'
@@ -182,15 +183,13 @@ ruleTester.run("nonblock-statement-body-position", rule, {
         },
         `
             if (foo) {
-            } else
-              if (bar) {
+            } else if (bar) {
               }
         `,
         {
             code: `
                 if (foo) {
-                } else
-                  if (bar) {
+                } else if (bar) {
                   }
             `,
             options: ["beside"]
@@ -207,7 +206,8 @@ ruleTester.run("nonblock-statement-body-position", rule, {
                 }
             `,
             output: `
-                if (foo) { bar();
+                if (foo) {
+bar();
                 }
             `,
             errors: [UNEXPECTED_LINEBREAK]
@@ -219,7 +219,8 @@ ruleTester.run("nonblock-statement-body-position", rule, {
                 }
             `,
             output: `
-                while (foo) { bar();
+                while (foo) {
+bar();
                 }
             `,
             errors: [UNEXPECTED_LINEBREAK]
@@ -228,24 +229,22 @@ ruleTester.run("nonblock-statement-body-position", rule, {
             code: `
                 do {
                     bar();
-                }
-                while (foo)
-            `,
+                } while (foo)`,
             output: `
-                do { bar();
-                }
-                while (foo)
-            `,
+                do {
+bar();
+                } while (foo)`,
             errors: [UNEXPECTED_LINEBREAK]
         },
         {
             code: `
-                for (;foo;) {
+                for (; foo;) {
                     bar();
                 }
             `,
             output: `
-                for (;foo;) { bar();
+                for (; foo;) {
+bar();
                 }
             `,
             errors: [UNEXPECTED_LINEBREAK]
@@ -257,7 +256,8 @@ ruleTester.run("nonblock-statement-body-position", rule, {
                 }
             `,
             output: `
-                for (foo in bar) { baz();
+                for (foo in bar) {
+baz();
                 }
             `,
             errors: [UNEXPECTED_LINEBREAK]
@@ -269,7 +269,8 @@ ruleTester.run("nonblock-statement-body-position", rule, {
                 }
             `,
             output: `
-                for (foo of bar) { baz();
+                for (foo of bar) {
+baz();
                 }
             `,
             errors: [UNEXPECTED_LINEBREAK]
@@ -283,8 +284,10 @@ ruleTester.run("nonblock-statement-body-position", rule, {
                 }
             `,
             output: `
-                if (foo) { bar();
-                } else { baz();
+                if (foo) {
+bar();
+                } else {
+baz();
                 }
             `,
             errors: [UNEXPECTED_LINEBREAK, UNEXPECTED_LINEBREAK]
@@ -329,13 +332,17 @@ ruleTester.run("nonblock-statement-body-position", rule, {
         },
         {
             code: `
-                if (foo) { bar();
-                } else { baz();
+                if (foo) {
+bar();
+                } else {
+baz();
                 }
             `,
             output: `
-                if (foo) { \nbar();
-                } else { \nbaz();
+                if (foo) {
+\nbar();
+                } else {
+\nbaz();
                 }
             `,
             options: ["below"],
@@ -346,7 +353,8 @@ ruleTester.run("nonblock-statement-body-position", rule, {
         {
             code: "if (foo) bar();",
             output: "if (foo) \nbar();",
-            options: ["below", { overrides: { while { : "beside" } }],
+            options: ["below", { overrides: { while {
+: "beside" } }],
             errors: [EXPECTED_LINEBREAK]
         },
         {
@@ -357,16 +365,19 @@ ruleTester.run("nonblock-statement-body-position", rule, {
             }
             `,
             output: `
-                while (foo) { bar();
+                while (foo) {
+bar();
                 }
             `,
-            options: ["below", { overrides: { while { : "beside" } }],
+            options: ["below", { overrides: { while {
+: "beside" } }],
             errors: [UNEXPECTED_LINEBREAK]
         },
         {
             code: "do bar(); while (foo)",
             output: "do \nbar(); while (foo)",
-            options: ["any", { overrides: { do { : "below" }
+            options: ["any", { overrides: { do {
+: "below" }
             } }],
             errors: [EXPECTED_LINEBREAK]
         }

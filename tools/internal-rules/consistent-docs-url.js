@@ -21,7 +21,6 @@ function getPropertyFromObject(property, node) {
     const properties = node.properties;
 
     if (!Array.isArray(properties)) {
-
         // if properties is not an array, "internal-no-invalid-meta" will already report this.
         return null;
     }
@@ -43,7 +42,6 @@ function getPropertyFromObject(property, node) {
  */
 function checkMetaDocsUrl(context, exportsNode) {
     if (exportsNode.type !== "ObjectExpression") {
-
         // if the exported node is not the correct format, "internal-no-invalid-meta" will already report this.
         return;
     }
@@ -104,7 +102,6 @@ module.exports = {
                     node.left.type === "MemberExpression" &&
                     node.left.object.name === "module" &&
                     node.left.property.name === "exports") {
-
                     checkMetaDocsUrl(context, node.right);
                 }
             }

@@ -1,7 +1,7 @@
 /*expected
 initial->s1_1->s1_3->s1_2->s1_3->s1_4;
 */
-for (var i = 0; ; ++i) {
+for (var i = 0;; ++i) {
     foo();
 }
 

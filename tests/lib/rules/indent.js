@@ -307,7 +307,7 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if(data) {
+                if (data) {
                   console.log('hi');
                   b = true;};
             `,
@@ -739,7 +739,7 @@ ruleTester.run("indent", rule, {
             code: unIndent`
                 function test() {
                   if (true ||
-                            false){
+                            false) {
                     console.log(val);
                   }
                 }
@@ -755,14 +755,14 @@ ruleTester.run("indent", rule, {
         unIndent`
             for (var foo = 1;
                 foo < 10;
-                foo++) {}
+                foo++) {
+}
         `,
         unIndent`
-            for (
-                var foo = 1;
+            for (var foo = 1;
                 foo < 10;
-                foo++
-            ) {}
+                foo++) {
+}
         `,
         {
             code: unIndent`
@@ -776,7 +776,7 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if(true) {
+                if (true) {
                   if (true) {
                     if (true) {
                       console.log(val);
@@ -796,7 +796,8 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                for(;length > index; index++) { if(NO_HOLES || index in self){
+                for (; length > index; index++) {
+if (NO_HOLES || index in self) {
                   x++;
                 }
                 }
@@ -806,7 +807,7 @@ ruleTester.run("indent", rule, {
         {
             code: unIndent`
                 function test(){
-                  switch(length){
+                  switch (length) {
                     case 1: return function(a){
                       return fn.call(that, a);
                     };
@@ -877,7 +878,7 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if (1 < 2){
+                if (1 < 2) {
                 //hi sd
                 }
             `,
@@ -885,7 +886,7 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                while (1 < 2){
+                while (1 < 2) {
                   //hi sd
                 }
             `,
@@ -985,7 +986,7 @@ ruleTester.run("indent", rule, {
                 a();
                 break;
             case "bar":
-                switch(x){
+                switch (x) {
                 case '1':
                     break;
                 case '2':
@@ -1000,10 +1001,9 @@ ruleTester.run("indent", rule, {
                 a();
                 break;
             case "bar":
-                if(x){
+                if (x) {
                     a = 2;
-                }
-                else{
+                } else {
                     a = 6;
                 }
             }
@@ -1014,10 +1014,9 @@ ruleTester.run("indent", rule, {
                 a();
                 break;
             case "bar":
-                if(x){
+                if (x) {
                     a = 2;
-                }
-                else {
+                } else {
                     a = 6;
                 }
             }
@@ -1040,7 +1039,7 @@ ruleTester.run("indent", rule, {
         unIndent`
             function foo() {
                 var a = "a";
-                switch(a) {
+                switch (a) {
                 case "a":
                     return "A";
                 case "b":
@@ -1051,7 +1050,7 @@ ruleTester.run("indent", rule, {
         `,
         {
             code: unIndent`
-                switch(value){
+                switch (value) {
                     case "1":
                     case "2":
                         a();
@@ -1060,7 +1059,7 @@ ruleTester.run("indent", rule, {
                         a();
                         break;
                 }
-                switch(value){
+                switch (value) {
                     case "1":
                         a();
                         break;
@@ -1327,7 +1326,8 @@ ruleTester.run("indent", rule, {
                     a = 5,
                     b = 4
 
-                if (YO) { console.log(TE)
+                if (YO) {
+console.log(TE)
             `,
             options: [2, { VariableDeclarator: { var: 2, let: 2, const: 3 } }]
         },
@@ -1754,7 +1754,6 @@ ruleTester.run("indent", rule, {
                   function() {
                     return true;
                   }()) {
-
                   x = x + 1;
                 };
             `,
@@ -1789,7 +1788,7 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if(data) {
+                if (data) {
                   console.log('hi');
                 }
             `,
@@ -2546,7 +2545,8 @@ ruleTester.run("indent", rule, {
                 bar === 1 ||
                 // comment
                 (baz === 1 && qux === 1)
-            ) {}
+            ) {
+}
         `,
         {
             code: unIndent`
@@ -3123,7 +3123,8 @@ ruleTester.run("indent", rule, {
                 !(
                     bar
                 )
-            ) {}
+            ) {
+}
         `,
         {
 
@@ -3540,7 +3541,8 @@ ruleTester.run("indent", rule, {
             }
         `,
         unIndent`
-            if (foo) { bar()
+            if (foo) {
+bar()
 
             ;
             } [1, 2, 3].map(baz)
@@ -3630,14 +3632,14 @@ ruleTester.run("indent", rule, {
         unIndent`
             if (
                 foo
-            ) { bar(
+            ) {
+bar(
                 baz
             );
             }
         `,
         unIndent`
-            if (foo)
-            {
+            if (foo) {
                 bar();
             }
         `,
@@ -3720,8 +3722,7 @@ ruleTester.run("indent", rule, {
         `,
         {
             code: unIndent`
-                switch (foo)
-                {
+                switch (foo) {
                     case 1:
                         bar();
                 }
@@ -5275,9 +5276,7 @@ ruleTester.run("indent", rule, {
         `,
         unIndent`
             if (foo) {
-
                 // Comment can be in correct alignment even if gaps between (and not aligned with) code above/below
-
             }
         `,
         unIndent`
@@ -5603,7 +5602,7 @@ ruleTester.run("indent", rule, {
                         \${a} \${b}
                         template
                         literal
-                        \`(() => {        
+                        \`(() => {
                     foo();
                     
                     tagTwo\`multiline
@@ -5622,7 +5621,7 @@ ruleTester.run("indent", rule, {
                 tagOne\`multiline
                     template
                     literal
-                    \${a} \${b}\`({        
+                    \${a} \${b}\`({
                     foo: 1,
                     bar: tagTwo\`multiline
                         template
@@ -5664,7 +5663,7 @@ ruleTester.run("indent", rule, {
             code: unIndent`
                 foo
                     .bar
-                    .baz\` template 
+                    .baz\` template
                         literal \`(() => {
                         baz();
                     })
@@ -5797,14 +5796,14 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if (a){
+                if (a) {
                 \tb=c;
                 \t\tc=d;
                 e=f;
                 }
             `,
             output: unIndent`
-                if (a){
+                if (a) {
                 \tb=c;
                 \tc=d;
                 \te=f;
@@ -5815,14 +5814,14 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if (a){
+                if (a) {
                     b=c;
                       c=d;
                  e=f;
                 }
             `,
             output: unIndent`
-                if (a){
+                if (a) {
                     b=c;
                     c=d;
                     e=f;
@@ -5947,7 +5946,7 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                switch(value){
+                switch (value) {
                     case "1":
                         a();
                     break;
@@ -5960,7 +5959,7 @@ ruleTester.run("indent", rule, {
                 }
             `,
             output: unIndent`
-                switch(value){
+                switch (value) {
                     case "1":
                         a();
                         break;
@@ -5995,7 +5994,7 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                switch(value){
+                switch (value) {
                     case "1":
                         a();
                         break;
@@ -6007,7 +6006,7 @@ ruleTester.run("indent", rule, {
                 }
             `,
             output: unIndent`
-                switch(value){
+                switch (value) {
                     case "1":
                         a();
                         break;
@@ -6023,7 +6022,7 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                switch(value){
+                switch (value) {
                     case "1":
                     case "2":
                         a();
@@ -6031,7 +6030,7 @@ ruleTester.run("indent", rule, {
                     default:
                         break;
                 }
-                switch(value){
+                switch (value) {
                     case "1":
                     break;
                     case "2":
@@ -6043,7 +6042,7 @@ ruleTester.run("indent", rule, {
                 }
             `,
             output: unIndent`
-                switch(value){
+                switch (value) {
                     case "1":
                     case "2":
                         a();
@@ -6051,7 +6050,7 @@ ruleTester.run("indent", rule, {
                     default:
                         break;
                 }
-                switch(value){
+                switch (value) {
                     case "1":
                         break;
                     case "2":
@@ -6067,7 +6066,7 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                switch(value){
+                switch (value) {
                 case "1":
                         a();
                         break;
@@ -6078,7 +6077,7 @@ ruleTester.run("indent", rule, {
                 }
             `,
             output: unIndent`
-                switch(value){
+                switch (value) {
                 case "1":
                     a();
                     break;
@@ -6286,29 +6285,29 @@ ruleTester.run("indent", rule, {
             code: unIndent`
                 for (var foo = 1;
                 foo < 10;
-                foo++) {}
+                foo++) {
+}
             `,
             output: unIndent`
                 for (var foo = 1;
                     foo < 10;
-                    foo++) {}
+                    foo++) {
+}
             `,
             errors: expectedErrors([[2, 4, 0, "Identifier"], [3, 4, 0, "Identifier"]])
         },
         {
             code: unIndent`
-                for (
-                var foo = 1;
+                for (var foo = 1;
                 foo < 10;
-                foo++
-                    ) {}
+                foo++) {
+}
             `,
             output: unIndent`
-                for (
-                    var foo = 1;
+                for (var foo = 1;
                     foo < 10;
-                    foo++
-                ) {}
+                    foo++) {
+}
             `,
             errors: expectedErrors([[2, 4, 0, "Keyword"], [3, 4, 0, "Identifier"], [4, 4, 0, "Identifier"], [5, 0, 4, "Punctuator"]])
         },
@@ -6348,15 +6347,11 @@ ruleTester.run("indent", rule, {
             code: unIndent`
                 do {
                 b();
-                }
-                while(true)
-            `,
+                } while (true)`,
             output: unIndent`
                 do {
                     b();
-                }
-                while(true)
-            `,
+                } while (true)`,
             options: [4],
             errors: expectedErrors([
                 [2, 4, 0, "Identifier"]
@@ -6364,12 +6359,12 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if(true) {
+                if (true) {
                 b();
                 }
             `,
             output: unIndent`
-                if(true) {
+                if (true) {
                     b();
                 }
             `,
@@ -6813,7 +6808,7 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if(true) {
+                if (true) {
                   if (true) {
                     if (true) {
                     console.log(val);
@@ -6822,7 +6817,7 @@ ruleTester.run("indent", rule, {
                 }
             `,
             output: unIndent`
-                if(true) {
+                if (true) {
                   if (true) {
                     if (true) {
                       console.log(val);
@@ -7091,20 +7086,18 @@ ruleTester.run("indent", rule, {
         {
             code: unIndent`
                 {
-                    if(a){
+                    if (a) {
                         foo();
-                    }
-                  else{
+                    } else {
                         bar();
                     }
                 }
             `,
             output: unIndent`
                 {
-                    if(a){
+                    if (a) {
                         foo();
-                    }
-                    else{
+                    } else {
                         bar();
                     }
                 }
@@ -7115,10 +7108,9 @@ ruleTester.run("indent", rule, {
         {
             code: unIndent`
                 {
-                    if(a){
+                    if (a) {
                         foo();
-                    }
-                  else {
+                    } else {
                         bar();
                   }
 
@@ -7126,10 +7118,9 @@ ruleTester.run("indent", rule, {
             `,
             output: unIndent`
                 {
-                    if(a){
+                    if (a) {
                         foo();
-                    }
-                    else {
+                    } else {
                         bar();
                     }
 
@@ -7141,7 +7132,7 @@ ruleTester.run("indent", rule, {
         {
             code: unIndent`
                 {
-                    if(a) {
+                    if (a) {
                         foo();
                   } else {
                         bar();
@@ -7150,7 +7141,7 @@ ruleTester.run("indent", rule, {
             `,
             output: unIndent`
                 {
-                    if(a) {
+                    if (a) {
                         foo();
                     } else {
                         bar();
@@ -7198,12 +7189,12 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if(data) {
+                if (data) {
                 console.log('hi');
                 }
             `,
             output: unIndent`
-                if(data) {
+                if (data) {
                   console.log('hi');
                 }
             `,
@@ -7453,15 +7444,21 @@ ruleTester.run("indent", rule, {
             // Indentation with multiple else statements: https://github.com/eslint/eslint/issues/6956
 
             code: unIndent`
-                if (foo) { bar();
-                } else if (baz) { foobar();
-                  } else if (qux) { qux();
+                if (foo) {
+bar();
+                } else if (baz) {
+foobar();
+                  } else if (qux) {
+qux();
                   }
             `,
             output: unIndent`
-                if (foo) { bar();
-                } else if (baz) { foobar();
-                } else if (qux) { qux();
+                if (foo) {
+bar();
+                } else if (baz) {
+foobar();
+                } else if (qux) {
+qux();
                 }
             `,
             options: [2],
@@ -7469,15 +7466,21 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if (foo) { bar();
-                } else if (baz) { foobar();
-                  } else { qux();
+                if (foo) {
+bar();
+                } else if (baz) {
+foobar();
+                  } else {
+qux();
                   }
             `,
             output: unIndent`
-                if (foo) { bar();
-                } else if (baz) { foobar();
-                } else { qux();
+                if (foo) {
+bar();
+                } else if (baz) {
+foobar();
+                } else {
+qux();
                 }
             `,
             options: [2],
@@ -7486,14 +7489,18 @@ ruleTester.run("indent", rule, {
         {
             code: unIndent`
                 foo();
-                  if (baz) { foobar();
-                  } else { qux();
+                  if (baz) {
+foobar();
+                  } else {
+qux();
                   }
             `,
             output: unIndent`
                 foo();
-                if (baz) { foobar();
-                } else { qux();
+                if (baz) {
+foobar();
+                } else {
+qux();
                 }
             `,
             options: [2],
@@ -7501,15 +7508,19 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if (foo) { bar();
-                } else if (baz) { foobar();
+                if (foo) {
+bar();
+                } else if (baz) {
+foobar();
                      } else if (bip) {
                        qux();
                      }
             `,
             output: unIndent`
-                if (foo) { bar();
-                } else if (baz) { foobar();
+                if (foo) {
+bar();
+                } else if (baz) {
+foobar();
                 } else if (bip) {
                   qux();
                 }
@@ -7519,7 +7530,8 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if (foo) { bar();
+                if (foo) {
+bar();
                 } else if (baz) {
                     foobar();
                      } else if (boop) {
@@ -7527,7 +7539,8 @@ ruleTester.run("indent", rule, {
                      }
             `,
             output: unIndent`
-                if (foo) { bar();
+                if (foo) {
+bar();
                 } else if (baz) {
                   foobar();
                 } else if (boop) {
@@ -7837,8 +7850,7 @@ ruleTester.run("indent", rule, {
             code: unIndent`
                 {
                     try {
-                    }
-                catch (err) {
+                    } catch (err) {
                     }
                 finally {
                     }
@@ -7847,8 +7859,7 @@ ruleTester.run("indent", rule, {
             output: unIndent`
                 {
                     try {
-                    }
-                    catch (err) {
+                    } catch (err) {
                     }
                     finally {
                     }
@@ -7863,16 +7874,12 @@ ruleTester.run("indent", rule, {
             code: unIndent`
                 {
                     do {
-                    }
-                while (true)
-                }
+                    } while (true)}
             `,
             output: unIndent`
                 {
                     do {
-                    }
-                    while (true)
-                }
+                    } while (true)}
             `,
             errors: expectedErrors([4, 4, 0, "Keyword"])
         },
@@ -7915,7 +7922,7 @@ ruleTester.run("indent", rule, {
         {
             code: unIndent`
                 function test(){
-                  switch(length){
+                  switch (length) {
                     case 1: return function(a){
                     return fn.call(that, a);
                     };
@@ -7924,7 +7931,7 @@ ruleTester.run("indent", rule, {
             `,
             output: unIndent`
                 function test(){
-                  switch(length){
+                  switch (length) {
                     case 1: return function(a){
                       return fn.call(that, a);
                     };
@@ -9397,13 +9404,15 @@ ruleTester.run("indent", rule, {
         },
         {
             code: unIndent`
-                if (foo) { bar()
+                if (foo) {
+bar()
 
                     ;
                 } [1, 2, 3].map(baz)
             `,
             output: unIndent`
-                if (foo) { bar()
+                if (foo) {
+bar()
 
                 ;
                 } [1, 2, 3].map(baz)
@@ -9483,7 +9492,8 @@ ruleTester.run("indent", rule, {
             code: unIndent`
                 if (
                     foo
-                ) { bar(
+                ) {
+bar(
                         baz
                     );
                 }
@@ -9491,7 +9501,8 @@ ruleTester.run("indent", rule, {
             output: unIndent`
                 if (
                     foo
-                ) { bar(
+                ) {
+bar(
                     baz
                 );
                 }
@@ -10736,14 +10747,12 @@ ruleTester.run("indent", rule, {
         {
             code: unIndent`
                 if (foo) {
-
                 // Comment cannot align with code immediately above if there is a whitespace gap
                     doSomething();
                 }
             `,
             output: unIndent`
                 if (foo) {
-
                     // Comment cannot align with code immediately above if there is a whitespace gap
                     doSomething();
                 }
@@ -10756,7 +10765,6 @@ ruleTester.run("indent", rule, {
                     foo(
                         bar);
                 // Comment cannot align with code immediately below if there is a whitespace gap
-
                 }
             `,
             output: unIndent`
@@ -10764,7 +10772,6 @@ ruleTester.run("indent", rule, {
                     foo(
                         bar);
                     // Comment cannot align with code immediately below if there is a whitespace gap
-
                 }
             `,
             errors: expectedErrors([4, 4, 0, "Line"])
@@ -11254,7 +11261,7 @@ ruleTester.run("indent", rule, {
                 tagOne\`multiline \${a} \${b}
                         template
                         literal
-                        \`(() => {        
+                        \`(() => {
                 foo();
                     
                     tagTwo\`multiline
@@ -11270,7 +11277,7 @@ ruleTester.run("indent", rule, {
                 tagOne\`multiline \${a} \${b}
                         template
                         literal
-                        \`(() => {        
+                        \`(() => {
                     foo();
                     
                     tagTwo\`multiline

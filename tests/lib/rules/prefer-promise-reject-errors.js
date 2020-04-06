@@ -76,8 +76,10 @@ ruleTester.run("prefer-promise-reject-errors", rule, {
         `
           new Promise((resolve, reject) => {
             fs.readFile('foo.txt', (err, file) => {
-              if (err) { reject('File not found')
-              else { resolve(file)
+              if (err) {
+reject('File not found')
+              else {
+resolve(file)
             }
               })
           })

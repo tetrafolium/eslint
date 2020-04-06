@@ -31,17 +31,22 @@ ruleTester.run("no-else-return", rule, {
         `
             function foo() {
                 if (foo) {
-                    if (bar) { return;
-                    } else { baz;
-                } } else { qux;
+                    if (bar) {
+return;
+                    } else {
+baz;
+                } } else {
+qux;
                 }
             }
         `,
         `
             function foo() {
                 while (foo) {
-                    if (bar) { return;
-                    } else { baz;
+                    if (bar) {
+return;
+                    } else {
+baz;
                     }
                 }
             }

@@ -470,7 +470,6 @@ describe("CodePathAnalyzer", () => {
                     assert(toSegment instanceof CodePathSegment);
 
                     if (count === 1) {
-
                         // connect path: "update" -> "test"
                         assert(node.parent.type === "ForStatement");
                     } else if (count === 2) {
@@ -496,7 +495,6 @@ describe("CodePathAnalyzer", () => {
                     assert(toSegment instanceof CodePathSegment);
 
                     if (count === 1) {
-
                         // connect path: "right" -> "left"
                         assert(node.parent.type === "ForInStatement");
                     } else if (count === 2) {
@@ -522,7 +520,6 @@ describe("CodePathAnalyzer", () => {
                     assert(toSegment instanceof CodePathSegment);
 
                     if (count === 1) {
-
                         // connect path: "right" -> "left"
                         assert(node.parent.type === "ForOfStatement");
                     } else if (count === 2) {

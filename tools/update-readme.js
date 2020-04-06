@@ -95,7 +95,8 @@ const HTML_TEMPLATE = stripIndents`
 
     <%- formatTeamMembers(team.tsc) %>
 
-    <% if (team.reviewers.length > 0) { %>
+    <% if (team.reviewers.length > 0) {
+%>
     ### Reviewers
 
     The people who review and implement new features.
@@ -104,7 +105,8 @@ const HTML_TEMPLATE = stripIndents`
 
     <% } %>
 
-    <% if (team.committers.length > 0) { %>
+    <% if (team.committers.length > 0) {
+%>
     ### Committers
 
     The people who review and fix bugs and help triage issues.

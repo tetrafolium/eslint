@@ -39,7 +39,6 @@ module.exports = (fileInfo, api) => {
         if (ruleName in ruleTypes) {
             ruleType = ruleTypes[ruleName];
         } else {
-
             // otherwise fallback to category
             switch (categoryNode.value) {
                 case "Stylistic Issues":
@@ -56,11 +55,9 @@ module.exports = (fileInfo, api) => {
         }
 
         if (typeNode) {
-
             // update existing type node
             typeNode.value = j.literal(ruleType);
         } else {
-
             // add new type node if one doesn't exist
             const newProp = j.property(
                 "init",

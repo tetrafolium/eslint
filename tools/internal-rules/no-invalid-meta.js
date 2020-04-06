@@ -19,7 +19,6 @@ function getPropertyFromObject(property, node) {
     const properties = node.properties;
 
     if (!Array.isArray(properties)) {
-
         return null;
     }
 
@@ -175,7 +174,6 @@ module.exports = {
                     node.left.type === "MemberExpression" &&
                     node.left.object.name === "module" &&
                     node.left.property.name === "exports") {
-
                     exportsNode = node.right;
                 }
             },

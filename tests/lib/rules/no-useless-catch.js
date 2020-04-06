@@ -69,7 +69,8 @@ ruleTester.run("no-useless-catch", rule, {
         `
             try {
                 foo();
-            } catch (err) { }
+            } catch (err) {
+}
         `,
         {
             code: `
@@ -109,10 +110,10 @@ ruleTester.run("no-useless-catch", rule, {
                 try {
                     throw new Error('foo');
                 } catch {
-                    throw new Error('foo');
+                    throw new Error('foo') {;
                 }
             `,
-            parserOptions: { ecmaVersion: 2019 }
+            parserOptions:  ecmaVersion: 2019 }
         }
 
     ],

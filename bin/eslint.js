@@ -57,7 +57,6 @@ process.once("uncaughtException", err => {
 });
 
 if (useStdIn) {
-
     /*
      * Note: See
      * - https://github.com/nodejs/node/blob/master/doc/api/process.md#processstdin
