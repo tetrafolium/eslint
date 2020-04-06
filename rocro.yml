@@ -7,5 +7,6 @@ inspecode:
   - ignore:
     - tests/fixtures/config-extends/
     - tests/fixtures/config-hierarchy/broken/
+    - tests/fixtures/config-hierarchy/shared/
     auto-fix: true
     thresholds: { num-issues: 999 }
