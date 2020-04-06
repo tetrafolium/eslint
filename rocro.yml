@@ -1,8 +1,7 @@
 inspecode:
 
   experimental:
-    runtime:
-      nodejs: 10
+    runtime: { nodejs: 13 }
 
   clang-format:
     auto-fix: true
