@@ -12,10 +12,10 @@ inspecode:
     thresholds: { num-issues: 241 }
 
   eslint:
-    ignore:   # avoid codelift#1790 in test resources
-    - tests/fixtures/config-extends/
-    - tests/fixtures/config-hierarchy/broken/
-    - tests/fixtures/config-hierarchy/shared/
+    ignore:
+    - tests/fixtures/config-extends/          # error in "tests/fixtures/config-extends/package2/.eslintrc"
+    - tests/fixtures/config-hierarchy/broken/ # error in "tests/fixtures/config-hierarchy/broken/plugins/.eslintrc"
+    - tests/fixtures/config-hierarchy/shared/ # error in "tests/fixtures/config-hierarchy/shared/a/.eslintrc"
     auto-fix: true
     thresholds: { num-issues: 0 }
 
