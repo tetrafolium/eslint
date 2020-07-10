@@ -2,11 +2,27 @@ inspecode:
 
   #### -> codelift#1790
   eslint:
-  - auto-fix: true
-    ignore:
-    - tests/fixtures/config-extends/          # error in "tests/fixtures/config-extends/package2/.eslintrc"
-    - tests/fixtures/config-hierarchy/broken/ # error in "tests/fixtures/config-hierarchy/broken/plugins/.eslintrc"
-    - tests/fixtures/config-hierarchy/shared/ # error in "tests/fixtures/config-hierarchy/shared/a/.eslintrc"
+  - ignore:   # same settings as "/.eslintignore"
+    - /build/**
+    - /coverage/**
+    - /docs/**
+    - /jsdoc/**
+    - /templates/**
+    - /tests/bench/**
+    - /tests/fixtures/**
+    - /tests/performance/**
+    - /tmp/**
+    - /tools/internal-rules/node_modules/**
+    - test.js
+    - !.eslintrc.js
+    auto-fix: true
     thresholds: { num-issues: 999 }
-  - auto-fix: true  # aborted
+  - ignore:   # minimal ignore settings to avoid errors
+    - /tests/fixtures/config-extends/           # error in "tests/fixtures/config-extends/package2/.eslintrc"
+    - /tests/fixtures/config-hierarchy/broken/  # error in "tests/fixtures/config-hierarchy/broken/plugins/.eslintrc"
+    - /tests/fixtures/config-hierarchy/shared/  # error in "tests/fixtures/config-hierarchy/shared/a/.eslintrc"
+    auto-fix: true
+    thresholds: { num-issues: 999 }
+  - # ineffective "/.eslintignore"
+    auto-fix: false   # aborted
     thresholds: { num-issues: 999 }
