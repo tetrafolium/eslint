@@ -30,7 +30,8 @@ inspecode:
     - /tools/internal-rules/node_modules/**
     - test.js
     - !.eslintrc.js
-    config-file: ""
+    options:
+      --no-eslintrc:
     auto-fix: true
     thresholds: { num-issues: 999 }
   - ignore:   # minimal ignore settings to avoid errors
@@ -43,7 +44,8 @@ inspecode:
     - /tests/fixtures/config-extends/           # error in "tests/fixtures/config-extends/package2/.eslintrc"
     - /tests/fixtures/config-hierarchy/broken/  # error in "tests/fixtures/config-hierarchy/broken/plugins/.eslintrc"
     - /tests/fixtures/config-hierarchy/shared/  # error in "tests/fixtures/config-hierarchy/shared/a/.eslintrc"
-    config-file: ""
+    options:
+      --no-eslintrc:
     auto-fix: true
     thresholds: { num-issues: 999 }
   - # ineffective "/.eslintignore"
