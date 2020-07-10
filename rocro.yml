@@ -4,9 +4,9 @@ inspecode:
   eslint:
   - auto-fix: true
     ignore:
-    - tests/fixtures/config-extends/
-    - tests/fixtures/config-hierarchy/broken/
-    - tests/fixtures/config-hierarchy/shared/
+    - tests/fixtures/config-extends/          # error in "tests/fixtures/config-extends/package2/.eslintrc"
+    - tests/fixtures/config-hierarchy/broken/ # error in "tests/fixtures/config-hierarchy/broken/plugins/.eslintrc"
+    - tests/fixtures/config-hierarchy/shared/ # error in "tests/fixtures/config-hierarchy/shared/a/.eslintrc"
     thresholds: { num-issues: 999 }
   - auto-fix: true  # aborted
     thresholds: { num-issues: 999 }
