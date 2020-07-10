@@ -3,7 +3,7 @@ inspecode:
   global:
     runtime:
       nodejs: 12
+    ignore: tests/
 
   jshint:
-    ignore: tests/
     thresholds: { num-issues: 999 }
