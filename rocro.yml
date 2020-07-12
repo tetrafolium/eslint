@@ -48,6 +48,19 @@ inspecode:
       --no-eslintrc:
     auto-fix: true
     thresholds: { num-issues: 999 }
-  - # ineffective "/.eslintignore"
+  - ignore:
+    auto-fix: false   # aborted
+    thresholds: { num-issues: 999 }
+  - ignore:
+    options:
+      --no-eslintrc:
+    auto-fix: false   # aborted
+    thresholds: { num-issues: 999 }
+  - #ignore:
+    auto-fix: false   # aborted
+    thresholds: { num-issues: 999 }
+  - #ignore:
+    options:
+      --no-eslintrc:
     auto-fix: false   # aborted
     thresholds: { num-issues: 999 }
