@@ -1,7 +1,7 @@
 inspecode:
 
-  #### -> codelift#1790
   eslint:
+    # compare `config-file: ""` and ``
   - ignore:   # same settings as "/.eslintignore"
     - /build/**
     - /coverage/**
@@ -15,6 +15,8 @@ inspecode:
     - /tools/internal-rules/node_modules/**
     - test.js
     - !.eslintrc.js
+    #config-file: ""
+    #options: [ --no-eslintrc: ]
     auto-fix: true
     thresholds: { num-issues: 999 }
   - ignore:   # same settings as "/.eslintignore"
@@ -31,12 +33,32 @@ inspecode:
     - test.js
     - !.eslintrc.js
     config-file: ""
+    #options: [ --no-eslintrc: ]
+    auto-fix: true
+    thresholds: { num-issues: 999 }
+  - ignore:   # same settings as "/.eslintignore"
+    - /build/**
+    - /coverage/**
+    - /docs/**
+    - /jsdoc/**
+    - /templates/**
+    - /tests/bench/**
+    - /tests/fixtures/**
+    - /tests/performance/**
+    - /tmp/**
+    - /tools/internal-rules/node_modules/**
+    - test.js
+    - !.eslintrc.js
+    #config-file: ""
+    options: [ --no-eslintrc: ]
     auto-fix: true
     thresholds: { num-issues: 999 }
   - ignore:   # minimal ignore settings to avoid errors
     - /tests/fixtures/config-extends/           # error in "tests/fixtures/config-extends/package2/.eslintrc"
     - /tests/fixtures/config-hierarchy/broken/  # error in "tests/fixtures/config-hierarchy/broken/plugins/.eslintrc"
     - /tests/fixtures/config-hierarchy/shared/  # error in "tests/fixtures/config-hierarchy/shared/a/.eslintrc"
+    #config-file: ""
+    #options: [ --no-eslintrc: ]
     auto-fix: true
     thresholds: { num-issues: 999 }
   - ignore:   # minimal ignore settings to avoid errors
@@ -44,8 +66,44 @@ inspecode:
     - /tests/fixtures/config-hierarchy/broken/  # error in "tests/fixtures/config-hierarchy/broken/plugins/.eslintrc"
     - /tests/fixtures/config-hierarchy/shared/  # error in "tests/fixtures/config-hierarchy/shared/a/.eslintrc"
     config-file: ""
+    #options: [ --no-eslintrc: ]
     auto-fix: true
     thresholds: { num-issues: 999 }
-  - # ineffective "/.eslintignore"
+  - ignore:   # minimal ignore settings to avoid errors
+    - /tests/fixtures/config-extends/           # error in "tests/fixtures/config-extends/package2/.eslintrc"
+    - /tests/fixtures/config-hierarchy/broken/  # error in "tests/fixtures/config-hierarchy/broken/plugins/.eslintrc"
+    - /tests/fixtures/config-hierarchy/shared/  # error in "tests/fixtures/config-hierarchy/shared/a/.eslintrc"
+    #config-file: ""
+    options: [ --no-eslintrc: ]
+    auto-fix: true
+    thresholds: { num-issues: 999 }
+  - ignore:   # empty ignore
+    #config-file: ""
+    #options: [ --no-eslintrc: ]
+    auto-fix: false   # aborted
+    thresholds: { num-issues: 999 }
+  - ignore:   # empty ignore
+    config-file: ""
+    #options: [ --no-eslintrc: ]
+    auto-fix: false   # aborted
+    thresholds: { num-issues: 999 }
+  - ignore:   # empty ignore
+    #config-file: ""
+    options: [ --no-eslintrc: ]
+    auto-fix: false   # aborted
+    thresholds: { num-issues: 999 }
+  - #ignore:   # no ignore
+    #config-file: ""
+    #options: [ --no-eslintrc: ]
+    auto-fix: false   # aborted
+    thresholds: { num-issues: 999 }
+  - #ignore:   # no ignore
+    config-file: ""
+    #options: [ --no-eslintrc: ]
+    auto-fix: false   # aborted
+    thresholds: { num-issues: 999 }
+  - #ignore:   # no ignore
+    #config-file: ""
+    options: [ --no-eslintrc: ]
     auto-fix: false   # aborted
     thresholds: { num-issues: 999 }
