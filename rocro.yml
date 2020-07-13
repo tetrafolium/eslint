@@ -1,109 +1,24 @@
 inspecode:
 
   eslint:
-    # compare `config-file: ""` and ``
-  - ignore:   # same settings as "/.eslintignore"
-    - /build/**
-    - /coverage/**
-    - /docs/**
-    - /jsdoc/**
-    - /templates/**
-    - /tests/bench/**
-    - /tests/fixtures/**
-    - /tests/performance/**
-    - /tmp/**
-    - /tools/internal-rules/node_modules/**
-    - test.js
-    - !.eslintrc.js
-    #config-file: ""
-    #options: [ --no-eslintrc: ]
-    auto-fix: true
+  - &base_settings
+    auto-fix: false   # aborted
     thresholds: { num-issues: 999 }
-  - ignore:   # same settings as "/.eslintignore"
-    - /build/**
-    - /coverage/**
-    - /docs/**
-    - /jsdoc/**
-    - /templates/**
-    - /tests/bench/**
-    - /tests/fixtures/**
-    - /tests/performance/**
-    - /tmp/**
-    - /tools/internal-rules/node_modules/**
-    - test.js
-    - !.eslintrc.js
-    config-file: ""
-    #options: [ --no-eslintrc: ]
-    auto-fix: true
-    thresholds: { num-issues: 999 }
-  - ignore:   # same settings as "/.eslintignore"
-    - /build/**
-    - /coverage/**
-    - /docs/**
-    - /jsdoc/**
-    - /templates/**
-    - /tests/bench/**
-    - /tests/fixtures/**
-    - /tests/performance/**
-    - /tmp/**
-    - /tools/internal-rules/node_modules/**
-    - test.js
-    - !.eslintrc.js
-    #config-file: ""
-    options: [ --no-eslintrc: ]
-    auto-fix: true
-    thresholds: { num-issues: 999 }
-  - ignore:   # minimal ignore settings to avoid errors
+  - <<: *base_settings
+    options: [ --no-eslintrc ]
+  - <<: *base_settings
+    options: [ --no-ignore ]
+  - <<: *base_settings
+    options: [ --no-eslintrc, --no-ignore ]
+  - &ignore_error_tests
+    <<: *base_settings
+    ignore:   # minimal ignore settings to avoid errors
     - /tests/fixtures/config-extends/           # error in "tests/fixtures/config-extends/package2/.eslintrc"
     - /tests/fixtures/config-hierarchy/broken/  # error in "tests/fixtures/config-hierarchy/broken/plugins/.eslintrc"
     - /tests/fixtures/config-hierarchy/shared/  # error in "tests/fixtures/config-hierarchy/shared/a/.eslintrc"
-    #config-file: ""
-    #options: [ --no-eslintrc: ]
-    auto-fix: true
-    thresholds: { num-issues: 999 }
-  - ignore:   # minimal ignore settings to avoid errors
-    - /tests/fixtures/config-extends/           # error in "tests/fixtures/config-extends/package2/.eslintrc"
-    - /tests/fixtures/config-hierarchy/broken/  # error in "tests/fixtures/config-hierarchy/broken/plugins/.eslintrc"
-    - /tests/fixtures/config-hierarchy/shared/  # error in "tests/fixtures/config-hierarchy/shared/a/.eslintrc"
-    config-file: ""
-    #options: [ --no-eslintrc: ]
-    auto-fix: true
-    thresholds: { num-issues: 999 }
-  - ignore:   # minimal ignore settings to avoid errors
-    - /tests/fixtures/config-extends/           # error in "tests/fixtures/config-extends/package2/.eslintrc"
-    - /tests/fixtures/config-hierarchy/broken/  # error in "tests/fixtures/config-hierarchy/broken/plugins/.eslintrc"
-    - /tests/fixtures/config-hierarchy/shared/  # error in "tests/fixtures/config-hierarchy/shared/a/.eslintrc"
-    #config-file: ""
-    options: [ --no-eslintrc: ]
-    auto-fix: true
-    thresholds: { num-issues: 999 }
-  - ignore:   # empty ignore
-    #config-file: ""
-    #options: [ --no-eslintrc: ]
-    auto-fix: false   # aborted
-    thresholds: { num-issues: 999 }
-  - ignore:   # empty ignore
-    config-file: ""
-    #options: [ --no-eslintrc: ]
-    auto-fix: false   # aborted
-    thresholds: { num-issues: 999 }
-  - ignore:   # empty ignore
-    #config-file: ""
-    options: [ --no-eslintrc: ]
-    auto-fix: false   # aborted
-    thresholds: { num-issues: 999 }
-  - #ignore:   # no ignore
-    #config-file: ""
-    #options: [ --no-eslintrc: ]
-    auto-fix: false   # aborted
-    thresholds: { num-issues: 999 }
-  - #ignore:   # no ignore
-    config-file: ""
-    #options: [ --no-eslintrc: ]
-    auto-fix: false   # aborted
-    thresholds: { num-issues: 999 }
-  - #ignore:   # no ignore
-    #config-file: ""
-    options: [ --no-eslintrc: ]
-    auto-fix: false   # aborted
-    thresholds: { num-issues: 999 }
+  - <<: *ignore_error_tests
+    options: [ --no-eslintrc ]
+  - <<: *ignore_error_tests
+    options: [ --no-ignore ]
+  - <<: *ignore_error_tests
+    options: [ --no-eslintrc, --no-ignore ]
